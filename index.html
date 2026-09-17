@@ -123,18 +123,45 @@ header.site{position:sticky;top:env(safe-area-inset-top,0px);z-index:60;
 .hero .lede{max-width:52ch}
 .herocta{display:flex;flex-wrap:wrap;gap:12px;padding-top:8px}
 
-/* ---------- spec strip ---------- */
-.strip{border-block:1px solid var(--grip-soft);background:var(--stage)}
-.strip .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--grip-soft)}
-.strip .cell{background:var(--stage);padding:22px clamp(16px,3vw,28px)}
-.strip .v{font-family:var(--mono);font-size:clamp(17px,2vw,22px);color:#F3F0F7;
-  font-variant-numeric:tabular-nums;letter-spacing:-.01em}
-.strip .k{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
-  color:#6E6880;margin-top:6px}
-@media(max-width:780px){.strip .grid{grid-template-columns:repeat(2,1fr)}}
+/* ---------- the difference (USP) ---------- */
+.usp{position:relative;border-block:1px solid var(--grip-soft);
+  background:
+    radial-gradient(62% 90% at 14% 0%,rgba(151,33,176,.17),transparent 66%),
+    radial-gradient(48% 80% at 92% 100%,rgba(151,33,176,.10),transparent 68%),
+    var(--void);
+  padding-block:clamp(64px,8.5vw,116px)}
+.usp::before{content:"";position:absolute;left:0;right:0;top:0;height:2px;background:var(--prime)}
+.usp .wrap{display:grid;gap:20px}
+.usp-lead{font-size:clamp(30px,4.9vw,56px);line-height:1.02;letter-spacing:-.028em;
+  font-weight:700;font-variation-settings:'wdth' 118;max-width:18ch;color:#F7F5FA}
+.usp-sub{max-width:62ch;color:var(--scrim)}
+.usp-sub b{color:#F3F0F7;font-weight:600}
+.usp-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:clamp(26px,4vw,46px);
+  border-top:1px solid var(--grip)}
+.usp-item{padding:24px 26px 4px 0;border-right:1px solid var(--grip);display:grid;gap:9px;
+  align-content:start}
+.usp-item:last-child{border-right:0}
+.usp-item:not(:first-child){padding-left:26px}
+.usp-item .n{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.14em;
+  color:var(--violet-lift)}
+.usp-item strong{font-size:16px;font-weight:600;color:#F3F0F7;line-height:1.24;
+  font-variation-settings:'wdth' 108}
+.usp-item span{font-size:14px;line-height:1.55;color:var(--haze)}
+@media(max-width:1000px){
+  .usp-grid{grid-template-columns:1fr 1fr}
+  .usp-item{border-bottom:1px solid var(--grip);padding-bottom:22px}
+  .usp-item:nth-child(2n){border-right:0}
+  .usp-item:nth-child(n+3){border-bottom:0}
+}
+@media(max-width:620px){
+  .usp-grid{grid-template-columns:1fr}
+  .usp-item{border-right:0;padding-left:0!important;padding-right:0}
+  .usp-item:nth-child(3){border-bottom:1px solid var(--grip)}
+}
 
 /* ---------- sections ---------- */
 section{padding-block:clamp(52px,7.5vw,96px)}
+section[id]{scroll-margin-top:78px}
 .sec-head{display:grid;gap:14px;max-width:70ch}
 .cols{display:grid;gap:28px}
 @media(min-width:820px){
@@ -350,6 +377,73 @@ footer.site{border-top:1px solid var(--grip-soft);padding-block:clamp(40px,6vw,6
 .faq details > p{padding:0 18px 18px;max-width:72ch}
 
 .ph{color:var(--pulse);font-family:var(--mono);font-size:.92em}
+
+/* ---------- stage elevation drawing ---------- */
+.elev{width:100%;height:auto;display:block;border:1px solid var(--grip);border-radius:3px}
+.elev-wide{max-width:1420px;margin-inline:auto;padding-inline:var(--gutter)}
+.elev-scroll{overflow-x:auto}
+@media(max-width:860px){.elev-scroll .elev{min-width:840px}}
+.elev .st{fill:none;stroke:#6E6880;stroke-width:1}
+.elev .pnl{fill:#131119;stroke:#8E8899;stroke-width:1}
+.elev .wall{fill:#0E0D13;stroke:#CFC9D6;stroke-width:1.4}
+.elev .grid{fill:none;stroke:#CFC9D6;stroke-width:.5;opacity:.22}
+.elev .arc{fill:none;stroke:#8E8899;stroke-width:1;stroke-dasharray:3 5}
+.elev .fig{fill:none;stroke:#CFC9D6;stroke-width:1.4}
+.elev .dim{stroke:var(--violet-lift);stroke-width:1;fill:none}
+.elev .tick{stroke:var(--violet-lift);stroke-width:1;opacity:.6}
+.elev .spec{fill:rgba(8,8,8,.86);stroke:var(--grip)}
+.elev .ramp{stroke:url(#elvramp);stroke-width:2}
+.elev text{font-family:var(--mono)}
+.elev .k{font-size:11px;letter-spacing:.13em;fill:var(--haze)}
+.elev .v{font-size:15px;fill:#F3F0F7;letter-spacing:.02em}
+.elev .v2{font-size:12px;fill:#F3F0F7;letter-spacing:.05em}
+.elev .acc{font-size:11.5px;letter-spacing:.15em;fill:var(--violet-lift)}
+.elev .ttl{font-size:16px;letter-spacing:.2em;fill:#F3F0F7}
+
+/* ---------- process track ---------- */
+.proc{display:grid;grid-template-columns:repeat(5,1fr);gap:0;margin-top:34px;
+  border-top:1px solid var(--grip)}
+.proc-step{position:relative;padding:28px 22px 6px 0;border-right:1px solid var(--grip);
+  display:flex;flex-direction:column;gap:8px}
+.proc-step:not(:first-child){padding-left:22px}
+.proc-step:last-child{border-right:0}
+.proc-step::before{content:"";position:absolute;top:-4px;left:0;width:7px;height:7px;
+  background:var(--violet-lift)}
+.proc-step:not(:first-child)::before{left:22px}
+.proc-step .n{font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.14em;
+  color:var(--violet-lift)}
+.proc-step h4{font-size:16px;line-height:1.24;font-variation-settings:'wdth' 108}
+.proc-step p{font-size:13.5px;line-height:1.55;color:var(--haze);max-width:none;margin:0}
+.proc-step .when{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:#6E6880;margin-top:auto;padding-top:16px}
+@media(max-width:1080px){
+  .proc{grid-template-columns:repeat(2,1fr)}
+  .proc-step{border-bottom:1px solid var(--grip);padding-bottom:24px}
+  .proc-step:nth-child(2n){border-right:0}
+  .proc-step:nth-child(odd)::before{left:0}
+  .proc-step:nth-child(even)::before{left:22px}
+  .proc-step:last-child{border-bottom:0}
+}
+@media(max-width:620px){
+  .proc{grid-template-columns:1fr}
+  .proc-step{border-right:0;padding-left:0!important;padding-right:0}
+  .proc-step::before{left:0!important}
+}
+
+/* ---------- facility schedule ---------- */
+.fac{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:26px}
+@media(max-width:900px){.fac{grid-template-columns:1fr}}
+.facgrp{border:1px solid var(--grip);border-radius:3px;background:var(--stage);padding:20px 22px}
+.facgrp .label{color:var(--violet-lift)}
+.facrow{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:baseline;padding:11px 0;
+  border-bottom:1px solid var(--grip-soft)}
+.facgrp .facrow:first-of-type{margin-top:12px}
+.facgrp .facrow:last-child{border-bottom:0;padding-bottom:0}
+.facrow b{font-size:14.5px;font-weight:600;color:#F3F0F7}
+.facrow b small{display:block;font-weight:400;color:var(--haze);font-size:12.5px;line-height:1.45;
+  margin-top:3px}
+.facrow i{font-style:normal;font-family:var(--mono);font-size:12.5px;color:var(--scrim);
+  text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
 </style>
 
 </head>
@@ -378,18 +472,59 @@ footer.site{border-top:1px solid var(--grip-soft);padding-block:clamp(40px,6vw,6
     <div class="shot-scrim"></div>
     <div class="shot-copy">
       <div class="wrap">
-        <span class="label">Virtual production &middot; Chennai</span>
+        <span class="label">Chennai &middot; Virtual production studio &amp; technology company</span>
         <h1>Final pixel, on the day.</h1>
-        <p class="lede">We build the world, put it on a sixty-foot wall, and light your cast with
-          it. The shot leaves the floor finished.</p>
+        <p class="lede">We run the LED volumes and we build the pipeline that drives them. One team
+          owns the stage and the code &mdash; which is why the image holds up when the schedule
+          doesn't.</p>
         <div class="herocta">
           <a class="cta" href="#/contact?kind=Stage%20booking">Book a stage</a>
-          <a class="cta cta--ghost" href="#/signature-stage">See the stage</a>
+          <button class="cta cta--ghost" type="button" data-scroll="what-we-run">What we run</button>
         </div>
       </div>
     </div>
     <div class="shot-cap"><span>Playback &middot; Chennai &middot; 35 mm &middot; T2.8</span></div>
   </div>
+
+  <!-- ---------------- the difference ---------------- -->
+  <section class="usp">
+    <div class="wrap">
+      <span class="label">Why Gamma XRS</span>
+      <h2 class="usp-lead">The stage and the software are one team.</h2>
+      <p class="lede usp-sub">Camera tracking, colour management, scene delivery &mdash; we wrote
+        them, we run them, and we fix them standing on the floor. On your production we are
+        <b>the only party who owns both the volume and the code driving it</b>, and that changes
+        what happens on the day something goes wrong.</p>
+
+      <div class="usp-grid">
+        <div class="usp-item">
+          <span class="n">01</span>
+          <strong>One team, no hand-off</strong>
+          <span>When the tracking drifts at eleven at night, the person who wrote it is standing on
+            the floor. Not a ticket in another time zone.</span>
+        </div>
+        <div class="usp-item">
+          <span class="n">02</span>
+          <strong>Colour is a contract</strong>
+          <span>Our pipeline is specified in hex, Rec.709 and P3, and it is deterministic from scene
+            file to sensor. The grade is agreed before the camera rolls and it survives to
+            delivery.</span>
+        </div>
+        <div class="usp-item">
+          <span class="n">03</span>
+          <strong>Photoreal is a measurement</strong>
+          <span>We publish our colour maths, our latency and our tracking tolerance. Every figure we
+            claim is one somebody on the floor can reproduce.</span>
+        </div>
+        <div class="usp-item">
+          <span class="n">04</span>
+          <strong>We say what will not work</strong>
+          <span>Before you book, not after. If a scene needs hard sun or deep water we tell you, and
+            we tell you what we would do instead.</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <section>
     <div class="wrap">
@@ -397,11 +532,13 @@ footer.site{border-top:1px solid var(--grip-soft);padding-block:clamp(40px,6vw,6
         <div class="sec-head">
           <span class="label">What comes off the floor</span>
           <h2>This is the monitor, not the grade.</h2>
-          <p class="note">No green, no roto, no comp. The city behind the cast is on the wall,
-            it is lighting their jackets, and it is already in the frame the director is
-            watching. What we hand over at wrap is what you saw.</p>
-          <p class="note">The grade is agreed before the camera rolls, and it survives to
-            delivery.</p>
+          <p class="note">No green, no roto, no comp. The city behind the cast is on the wall, it is
+            lighting their jackets, and it is already in the frame the director is watching. What we
+            hand over at wrap is what you saw.</p>
+          <p class="note">Chrome, glass, water and eyes take their image from the wall directly.
+            That is the frame that sells a car, and the one that sells a costume.</p>
+          <p class="note">Sunset holds for as long as the schedule needs it, identically, on take
+            forty. Six locations in a day, none of them needing a permit or a convoy.</p>
         </div>
         <figure class="fig">
           <img src="assets/monitor.jpg" alt="The director's monitor on set, showing the cast walking through the neon city environment with camera metadata burned in.">
@@ -411,13 +548,13 @@ footer.site{border-top:1px solid var(--grip-soft);padding-block:clamp(40px,6vw,6
     </div>
   </section>
 
-  <section style="padding-top:0">
+  <section style="padding-top:0" id="what-we-run">
     <div class="wrap">
       <div class="sec-head">
         <span class="label">What we run</span>
         <h2>Two stages and a partnership programme.</h2>
-        <p class="note">One colour pipeline across all three. What changes is the size of the room
-          and the size of the schedule.</p>
+        <p class="note">The same pipeline drives all three. What changes is the size of the room and
+          the size of the schedule.</p>
       </div>
 
       <div class="offers">
@@ -434,7 +571,7 @@ footer.site{border-top:1px solid var(--grip-soft);padding-block:clamp(40px,6vw,6
         </a>
 
         <a class="offer" href="#/atelier-stage">
-          <div class="offer-media"><img src="assets/crew.jpg" alt="A small camera team working close to the wall."></div>
+          <div class="offer-media"><img src="assets/atelier.jpg" alt="A single operator behind a camera close to the LED wall, the plate lighting the frame."></div>
           <div class="offer-body">
             <span class="label" style="color:var(--violet-lift)">Atelier Stage</span>
             <h3>Twelve by ten, one operator</h3>
@@ -445,7 +582,7 @@ footer.site{border-top:1px solid var(--grip-soft);padding-block:clamp(40px,6vw,6
         </a>
 
         <a class="offer" href="#/creator-partnerships">
-          <div class="offer-media g-void plate-media"><span data-lockup="mark" style="width:96px;display:block"></span></div>
+          <div class="offer-media"><img src="assets/partners.jpg" alt="Director, producer and crew conferring at the edge of the stage between takes."></div>
           <div class="offer-body">
             <span class="label" style="color:var(--violet-lift)">Creator Partnerships</span>
             <h3>Stage time for a pilot</h3>
@@ -461,48 +598,40 @@ footer.site{border-top:1px solid var(--grip-soft);padding-block:clamp(40px,6vw,6
   <section style="padding-top:0">
     <div class="wrap cols cols-2">
       <div class="sec-head">
-        <span class="label">Why it works</span>
-        <h2>The light is real, so the shot is finished.</h2>
-        <p class="note">On a green screen you are promising a result. Here the environment is
-          already on the wall, already reflecting off the jacket, already in the actor's eyes. The
-          director signs off on the floor instead of six weeks later.</p>
-        <p class="note">Sunset holds for as long as the schedule needs it, identically, on take
-          forty. Six locations in a day, none of them requiring a permit or a convoy.</p>
+        <span class="label">Before you book</span>
+        <h2>Where the wall is the wrong answer.</h2>
+        <p class="note">Virtual production is a technique, not a religion. Four things we say out
+          loud at the recce, because finding them out on the day costs you a day.</p>
+        <p class="note">Send us the boards and the lens list. We will tell you which setups belong
+          on the wall, which belong on a location, and which we would split.</p>
         <div class="herocta" style="padding-top:6px">
-          <a class="cta cta--ghost" href="#/signature-stage">Read the specification</a>
+          <a class="cta cta--ghost" href="#/contact?kind=Tech%20pack">Send us a scene</a>
         </div>
       </div>
       <div class="rule-list">
-        <div class="rule"><b>01</b><div><strong>Reflections you cannot fake</strong>
-          <span>Chrome, glass, water and eyes take their image from the wall directly. That is the
-          frame that sells a car and the one that sells a costume.</span></div></div>
-        <div class="rule"><b>02</b><div><strong>Post starts ahead</strong>
-          <span>Final pixel in camera for most setups. VFX spends its budget on the shots that
-          genuinely need it.</span></div></div>
-        <div class="rule"><b>03</b><div><strong>1000 nits is not daylight</strong>
-          <span>For a scene that needs a hard sun key we light it practically and give the wall
-          everything behind it. We say this before you book, not after.</span></div></div>
-        <div class="rule"><b>04</b><div><strong>The wall has an edge</strong>
-          <span>Sixty feet is wide, not infinite. A frame that pans past the ends is a location
-          day, and we will tell you so.</span></div></div>
+        <div class="rule"><b>01</b><div><strong>Hard sun</strong>
+          <span>An LED wall is bright; it is not daylight. For a hard sun key we light it
+          practically and give the wall everything behind it.</span></div></div>
+        <div class="rule"><b>02</b><div><strong>The wall has an edge</strong>
+          <span>Sixty feet is wide, not infinite. A frame that pans past the ends is a location day,
+          and we will tell you so.</span></div></div>
+        <div class="rule"><b>03</b><div><strong>Water and heavy refraction</strong>
+          <span>Rain bars and large water surfaces read the wall straight back at you. Some of that
+          we solve on the floor; some of it belongs in a tank.</span></div></div>
+        <div class="rule"><b>04</b><div><strong>Your glass, tested first</strong>
+          <span>Moiré is a property of a lens against a panel, not a rumour. Bring the lens set to
+          the recce and we will put it on the wall before the shoot day.</span></div></div>
       </div>
     </div>
   </section>
 
-  <div class="strip">
-    <div class="wrap" style="padding-inline:0;max-width:none">
-      <div class="grid">
-        <div class="cell"><div class="v">60 × 20 ft</div><div class="k">Main curved wall</div></div>
-        <div class="cell"><div class="v">9216 × 3072</div><div class="k">Wall resolution</div></div>
-        <div class="cell"><div class="v">7680 Hz</div><div class="k">Max refresh</div></div>
-        <div class="cell"><div class="v">2.5°</div><div class="k">Arc, centre to edge</div></div>
-      </div>
-    </div>
-  </div>
-
   <div class="band">
     <div class="wrap">
-      <h2>Come and stand in front of it.</h2>
+      <div>
+        <h2>Come and stand in front of it.</h2>
+        <p class="note" style="margin-top:10px">Fifteen minutes on the floor answers more than a
+          deck does.</p>
+      </div>
       <div class="herocta" style="padding:0">
         <a class="cta" href="#/contact?kind=Tour">Book a tour</a>
         <a class="cta cta--ghost" href="#/contact?kind=Stage%20booking">Check dates</a>
@@ -531,84 +660,410 @@ footer.site{border-top:1px solid var(--grip-soft);padding-block:clamp(40px,6vw,6
   </div>
 
   <section>
-    <div class="wrap cols cols-split">
-      <div class="sec-head">
+    <div class="wrap">
+      <div class="sec-head" style="margin-bottom:26px">
         <span class="label">The room</span>
         <h2>Wide enough to hold a master. Curved enough to move.</h2>
-        <p class="note">The main wall runs sixty feet across and twenty high on a 2.5 degree arc
-          from centre to edge. That width holds a wide master without the frame finding the end of
-          the world, and that curvature keeps parallax reading correctly as the camera travels.</p>
-        <p class="note">An 18 by 15 foot ceiling panel carries the sky and the top light — the
-          reason interiors and car roofs sit correctly rather than looking lit from the front.
-          Three 3 by 6.5 foot panels each side move to wherever a reflection has to come from.</p>
-        <p class="note">Camera tracking is Stype RedSpy, so the perspective on the wall is driven
-          by where the lens actually is. The control desk sits on the floor with the crew, not in
-          another building.</p>
+        <p class="note">Sixty feet across, twenty high, on a 2.5 degree arc from centre to edge.
+          Every figure on this drawing is measured, and every one of them is in the tech pack we
+          send before you book.</p>
       </div>
-      <figure class="fig">
-        <img src="assets/stage-schematic.jpg" alt="Technical elevation of the Signature Stage: a 60 by 20 foot main curved LED wall, an 18 by 15 foot top panel, and three side panel units each side.">
-        <figcaption>Chennai &middot; Signature Stage &middot; Elevation</figcaption>
+
+    </div>
+
+    <div class="elev-wide">
+      <figure class="fig elev-scroll">
+<svg class="elev" viewBox="0 0 1360 770" role="img" aria-label="Elevation of the Gamma XRS Signature Stage: a 60 by 20 foot curved LED wall on a 2.5 degree arc, an 18 by 15 foot top LED panel, three 3 by 6.5 foot side panels each side, a control desk and a six foot figure for scale." xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="elvramp" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0%" stop-color="#F5EC9A"/><stop offset="28%" stop-color="#48A0F2"/>
+<stop offset="46%" stop-color="#4A5FE0"/><stop offset="72%" stop-color="#E63DA4"/>
+<stop offset="100%" stop-color="#9721B0"/></linearGradient>
+<linearGradient id="spill" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#9721B0" stop-opacity=".17"/>
+<stop offset="100%" stop-color="#9721B0" stop-opacity="0"/></linearGradient>
+<marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7"
+ orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#B84BD6"/></marker>
+<marker id="ah2" viewBox="0 0 10 10" refX="1" refY="5" markerWidth="7" markerHeight="7"
+ orient="auto"><path d="M10 0 L0 5 L10 10 z" fill="#B84BD6"/></marker>
+</defs>
+<rect x="1" y="1" width="1358" height="768" rx="3" fill="#0A090C" stroke="#2E2A36"/>
+<rect x="14" y="14" width="1332" height="742" rx="2" fill="none" stroke="#221E2A"/>
+<path class="st" d="M56 150 L56 596 M80 150 L80 596"/>
+<path class="st" d="M56 150.0 L80 174.8 L56 199.6"/>
+<path class="st" d="M56 174.8 L80 199.6 L56 224.3"/>
+<path class="st" d="M56 199.6 L80 224.3 L56 249.1"/>
+<path class="st" d="M56 224.3 L80 249.1 L56 273.9"/>
+<path class="st" d="M56 249.1 L80 273.9 L56 298.7"/>
+<path class="st" d="M56 273.9 L80 298.7 L56 323.4"/>
+<path class="st" d="M56 298.7 L80 323.4 L56 348.2"/>
+<path class="st" d="M56 323.4 L80 348.2 L56 373.0"/>
+<path class="st" d="M56 348.2 L80 373.0 L56 397.8"/>
+<path class="st" d="M56 373.0 L80 397.8 L56 422.6"/>
+<path class="st" d="M56 397.8 L80 422.6 L56 447.3"/>
+<path class="st" d="M56 422.6 L80 447.3 L56 472.1"/>
+<path class="st" d="M56 447.3 L80 472.1 L56 496.9"/>
+<path class="st" d="M56 472.1 L80 496.9 L56 521.7"/>
+<path class="st" d="M56 496.9 L80 521.7 L56 546.4"/>
+<path class="st" d="M56 521.7 L80 546.4 L56 571.2"/>
+<path class="st" d="M56 546.4 L80 571.2 L56 596.0"/>
+<path class="st" d="M56 571.2 L80 596.0 L56 620.8"/>
+<path class="st" d="M1280 150 L1280 596 M1304 150 L1304 596"/>
+<path class="st" d="M1280 150.0 L1304 174.8 L1280 199.6"/>
+<path class="st" d="M1280 174.8 L1304 199.6 L1280 224.3"/>
+<path class="st" d="M1280 199.6 L1304 224.3 L1280 249.1"/>
+<path class="st" d="M1280 224.3 L1304 249.1 L1280 273.9"/>
+<path class="st" d="M1280 249.1 L1304 273.9 L1280 298.7"/>
+<path class="st" d="M1280 273.9 L1304 298.7 L1280 323.4"/>
+<path class="st" d="M1280 298.7 L1304 323.4 L1280 348.2"/>
+<path class="st" d="M1280 323.4 L1304 348.2 L1280 373.0"/>
+<path class="st" d="M1280 348.2 L1304 373.0 L1280 397.8"/>
+<path class="st" d="M1280 373.0 L1304 397.8 L1280 422.6"/>
+<path class="st" d="M1280 397.8 L1304 422.6 L1280 447.3"/>
+<path class="st" d="M1280 422.6 L1304 447.3 L1280 472.1"/>
+<path class="st" d="M1280 447.3 L1304 472.1 L1280 496.9"/>
+<path class="st" d="M1280 472.1 L1304 496.9 L1280 521.7"/>
+<path class="st" d="M1280 496.9 L1304 521.7 L1280 546.4"/>
+<path class="st" d="M1280 521.7 L1304 546.4 L1280 571.2"/>
+<path class="st" d="M1280 546.4 L1304 571.2 L1280 596.0"/>
+<path class="st" d="M1280 571.2 L1304 596.0 L1280 620.8"/>
+<path class="st" d="M118 62 L1242 62 M118 86 L1242 86"/>
+<path class="st" d="M118.0 86 L161.2 62 L204.5 86"/>
+<path class="st" d="M161.2 86 L204.5 62 L247.7 86"/>
+<path class="st" d="M204.5 86 L247.7 62 L290.9 86"/>
+<path class="st" d="M247.7 86 L290.9 62 L334.2 86"/>
+<path class="st" d="M290.9 86 L334.2 62 L377.4 86"/>
+<path class="st" d="M334.2 86 L377.4 62 L420.6 86"/>
+<path class="st" d="M377.4 86 L420.6 62 L463.8 86"/>
+<path class="st" d="M420.6 86 L463.8 62 L507.1 86"/>
+<path class="st" d="M463.8 86 L507.1 62 L550.3 86"/>
+<path class="st" d="M507.1 86 L550.3 62 L593.5 86"/>
+<path class="st" d="M550.3 86 L593.5 62 L636.8 86"/>
+<path class="st" d="M593.5 86 L636.8 62 L680.0 86"/>
+<path class="st" d="M636.8 86 L680.0 62 L723.2 86"/>
+<path class="st" d="M680.0 86 L723.2 62 L766.5 86"/>
+<path class="st" d="M723.2 86 L766.5 62 L809.7 86"/>
+<path class="st" d="M766.5 86 L809.7 62 L852.9 86"/>
+<path class="st" d="M809.7 86 L852.9 62 L896.2 86"/>
+<path class="st" d="M852.9 86 L896.2 62 L939.4 86"/>
+<path class="st" d="M896.2 86 L939.4 62 L982.6 86"/>
+<path class="st" d="M939.4 86 L982.6 62 L1025.8 86"/>
+<path class="st" d="M982.6 86 L1025.8 62 L1069.1 86"/>
+<path class="st" d="M1025.8 86 L1069.1 62 L1112.3 86"/>
+<path class="st" d="M1069.1 86 L1112.3 62 L1155.5 86"/>
+<path class="st" d="M1112.3 86 L1155.5 62 L1198.8 86"/>
+<path class="st" d="M1155.5 86 L1198.8 62 L1242.0 86"/>
+<path class="st" d="M1198.8 86 L1242.0 62 L1285.2 86"/>
+<path class="st" d="M80 132 L268 178 L268 200 L80 154 Z"/>
+<path class="st" d="M80.0 154.0 L93.4 135.3 L106.9 160.6"/>
+<path class="st" d="M106.9 160.6 L120.3 141.9 L133.7 167.1"/>
+<path class="st" d="M133.7 167.1 L147.1 148.4 L160.6 173.7"/>
+<path class="st" d="M160.6 173.7 L174.0 155.0 L187.4 180.3"/>
+<path class="st" d="M187.4 180.3 L200.9 161.6 L214.3 186.9"/>
+<path class="st" d="M214.3 186.9 L227.7 168.1 L241.1 193.4"/>
+<path class="st" d="M241.1 193.4 L254.6 174.7 L268.0 200.0"/>
+<path class="st" d="M1280 132 L1092 178 L1092 200 L1280 154 Z"/>
+<path class="st" d="M1280.0 154.0 L1266.6 135.3 L1253.1 160.6"/>
+<path class="st" d="M1253.1 160.6 L1239.7 141.9 L1226.3 167.1"/>
+<path class="st" d="M1226.3 167.1 L1212.9 148.4 L1199.4 173.7"/>
+<path class="st" d="M1199.4 173.7 L1186.0 155.0 L1172.6 180.3"/>
+<path class="st" d="M1172.6 180.3 L1159.1 161.6 L1145.7 186.9"/>
+<path class="st" d="M1145.7 186.9 L1132.3 168.1 L1118.9 193.4"/>
+<path class="st" d="M1118.9 193.4 L1105.4 174.7 L1092.0 200.0"/>
+<path class="st" d="M542 166 L818 166 M542 188 L818 188"/>
+<path class="st" d="M542.0 188 L581.4 166 L620.9 188"/>
+<path class="st" d="M581.4 188 L620.9 166 L660.3 188"/>
+<path class="st" d="M620.9 188 L660.3 166 L699.7 188"/>
+<path class="st" d="M660.3 188 L699.7 166 L739.1 188"/>
+<path class="st" d="M699.7 188 L739.1 166 L778.6 188"/>
+<path class="st" d="M739.1 188 L778.6 166 L818.0 188"/>
+<path class="st" d="M778.6 188 L818.0 166 L857.4 188"/>
+<path class="st" d="M580 86 L580 166"/>
+<path class="st" d="M780 86 L780 166"/>
+<path class="pnl" d="M563 196 L797 196 L815 244 L545 244 Z"/>
+<path class="grid" d="M582.5 196 L567.5 244"/>
+<path class="grid" d="M602.0 196 L590.0 244"/>
+<path class="grid" d="M621.5 196 L612.5 244"/>
+<path class="grid" d="M641.0 196 L635.0 244"/>
+<path class="grid" d="M660.5 196 L657.5 244"/>
+<path class="grid" d="M680.0 196 L680.0 244"/>
+<path class="grid" d="M699.5 196 L702.5 244"/>
+<path class="grid" d="M719.0 196 L725.0 244"/>
+<path class="grid" d="M738.5 196 L747.5 244"/>
+<path class="grid" d="M758.0 196 L770.0 244"/>
+<path class="grid" d="M777.5 196 L792.5 244"/>
+<path class="grid" d="M557.0 212.0 L803.0 212.0"/>
+<path class="grid" d="M551.0 228.0 L809.0 228.0"/>
+<polygon points="290.0,560.0 306.2,558.9 322.5,557.8 338.8,556.7 355.0,555.7 371.2,554.8 387.5,553.9 403.8,553.0 420.0,552.2 436.2,551.5 452.5,550.8 468.8,550.1 485.0,549.5 501.2,548.9 517.5,548.4 533.8,548.0 550.0,547.6 566.2,547.2 582.5,546.9 598.8,546.6 615.0,546.4 631.2,546.2 647.5,546.1 663.8,546.0 680.0,546.0 696.2,546.0 712.5,546.1 728.8,546.2 745.0,546.4 761.2,546.6 777.5,546.9 793.8,547.2 810.0,547.6 826.2,548.0 842.5,548.4 858.8,548.9 875.0,549.5 891.2,550.1 907.5,550.8 923.8,551.5 940.0,552.2 956.2,553.0 972.5,553.9 988.8,554.8 1005.0,555.7 1021.2,556.7 1037.5,557.8 1053.8,558.9 1070.0,560.0 1070.0,646.0 1053.8,644.9 1037.5,643.8 1021.2,642.7 1005.0,641.7 988.8,640.8 972.5,639.9 956.2,639.0 940.0,638.2 923.8,637.5 907.5,636.8 891.2,636.1 875.0,635.5 858.8,634.9 842.5,634.4 826.2,634.0 810.0,633.6 793.8,633.2 777.5,632.9 761.2,632.6 745.0,632.4 728.8,632.2 712.5,632.1 696.2,632.0 680.0,632.0 663.8,632.0 647.5,632.1 631.2,632.2 615.0,632.4 598.8,632.6 582.5,632.9 566.2,633.2 550.0,633.6 533.8,634.0 517.5,634.4 501.2,634.9 485.0,635.5 468.8,636.1 452.5,636.8 436.2,637.5 420.0,638.2 403.8,639.0 387.5,639.9 371.2,640.8 355.0,641.7 338.8,642.7 322.5,643.8 306.3,644.9 290.0,646.0" fill="url(#spill)"/>
+<polygon class="wall" points="290.0,300.0 298.1,300.6 306.2,301.1 314.4,301.7 322.5,302.2 330.6,302.8 338.8,303.3 346.9,303.8 355.0,304.3 363.1,304.8 371.2,305.2 379.4,305.7 387.5,306.1 395.6,306.6 403.8,307.0 411.9,307.4 420.0,307.8 428.1,308.2 436.2,308.5 444.4,308.9 452.5,309.2 460.6,309.6 468.8,309.9 476.9,310.2 485.0,310.5 493.1,310.8 501.2,311.1 509.4,311.3 517.5,311.6 525.6,311.8 533.8,312.0 541.9,312.2 550.0,312.4 558.1,312.6 566.2,312.8 574.4,313.0 582.5,313.1 590.6,313.3 598.8,313.4 606.9,313.5 615.0,313.6 623.1,313.7 631.2,313.8 639.4,313.8 647.5,313.9 655.6,313.9 663.8,314.0 671.9,314.0 680.0,314.0 688.1,314.0 696.2,314.0 704.4,313.9 712.5,313.9 720.6,313.8 728.8,313.8 736.9,313.7 745.0,313.6 753.1,313.5 761.2,313.4 769.4,313.3 777.5,313.1 785.6,313.0 793.8,312.8 801.9,312.6 810.0,312.4 818.1,312.2 826.2,312.0 834.4,311.8 842.5,311.6 850.6,311.3 858.8,311.1 866.9,310.8 875.0,310.5 883.1,310.2 891.2,309.9 899.4,309.6 907.5,309.2 915.6,308.9 923.8,308.5 931.9,308.2 940.0,307.8 948.1,307.4 956.2,307.0 964.4,306.6 972.5,306.1 980.6,305.7 988.8,305.2 996.9,304.8 1005.0,304.3 1013.1,303.8 1021.2,303.3 1029.4,302.8 1037.5,302.2 1045.6,301.7 1053.8,301.1 1061.9,300.6 1070.0,300.0 1070.0,560.0 1061.9,559.4 1053.8,558.9 1045.6,558.3 1037.5,557.8 1029.4,557.2 1021.2,556.7 1013.1,556.2 1005.0,555.7 996.9,555.2 988.8,554.8 980.6,554.3 972.5,553.9 964.4,553.4 956.2,553.0 948.1,552.6 940.0,552.2 931.9,551.8 923.8,551.5 915.6,551.1 907.5,550.8 899.4,550.4 891.2,550.1 883.1,549.8 875.0,549.5 866.9,549.2 858.8,548.9 850.6,548.7 842.5,548.4 834.4,548.2 826.2,548.0 818.1,547.8 810.0,547.6 801.9,547.4 793.8,547.2 785.6,547.0 777.5,546.9 769.4,546.7 761.2,546.6 753.1,546.5 745.0,546.4 736.9,546.3 728.8,546.2 720.6,546.2 712.5,546.1 704.4,546.1 696.2,546.0 688.1,546.0 680.0,546.0 671.9,546.0 663.8,546.0 655.6,546.1 647.5,546.1 639.4,546.2 631.2,546.2 623.1,546.3 615.0,546.4 606.9,546.5 598.8,546.6 590.6,546.7 582.5,546.9 574.4,547.0 566.2,547.2 558.1,547.4 550.0,547.6 541.9,547.8 533.8,548.0 525.6,548.2 517.5,548.4 509.4,548.7 501.2,548.9 493.1,549.2 485.0,549.5 476.9,549.8 468.8,550.1 460.6,550.4 452.5,550.8 444.4,551.1 436.2,551.5 428.1,551.8 420.0,552.2 411.9,552.6 403.8,553.0 395.6,553.4 387.5,553.9 379.4,554.3 371.2,554.8 363.1,555.2 355.0,555.7 346.9,556.2 338.8,556.7 330.6,557.2 322.5,557.8 314.4,558.3 306.3,558.9 298.1,559.4 290.0,560.0"/>
+<path class="grid" d="M322.5 302.2 L322.5 557.8"/>
+<path class="grid" d="M355.0 304.3 L355.0 555.7"/>
+<path class="grid" d="M387.5 306.1 L387.5 553.9"/>
+<path class="grid" d="M420.0 307.8 L420.0 552.2"/>
+<path class="grid" d="M452.5 309.2 L452.5 550.8"/>
+<path class="grid" d="M485.0 310.5 L485.0 549.5"/>
+<path class="grid" d="M517.5 311.6 L517.5 548.4"/>
+<path class="grid" d="M550.0 312.4 L550.0 547.6"/>
+<path class="grid" d="M582.5 313.1 L582.5 546.9"/>
+<path class="grid" d="M615.0 313.6 L615.0 546.4"/>
+<path class="grid" d="M647.5 313.9 L647.5 546.1"/>
+<path class="grid" d="M680.0 314.0 L680.0 546.0"/>
+<path class="grid" d="M712.5 313.9 L712.5 546.1"/>
+<path class="grid" d="M745.0 313.6 L745.0 546.4"/>
+<path class="grid" d="M777.5 313.1 L777.5 546.9"/>
+<path class="grid" d="M810.0 312.4 L810.0 547.6"/>
+<path class="grid" d="M842.5 311.6 L842.5 548.4"/>
+<path class="grid" d="M875.0 310.5 L875.0 549.5"/>
+<path class="grid" d="M907.5 309.2 L907.5 550.8"/>
+<path class="grid" d="M940.0 307.8 L940.0 552.2"/>
+<path class="grid" d="M972.5 306.1 L972.5 553.9"/>
+<path class="grid" d="M1005.0 304.3 L1005.0 555.7"/>
+<path class="grid" d="M1037.5 302.2 L1037.5 557.8"/>
+<polyline class="grid" points="290.0,332.5 314.4,333.8 338.8,335.0 363.1,336.1 387.5,337.1 411.9,338.0 436.2,338.9 460.6,339.7 485.0,340.4 509.4,341.0 533.8,341.5 558.1,342.0 582.5,342.3 606.9,342.6 631.2,342.8 655.6,343.0 680.0,343.0 704.4,343.0 728.8,342.8 753.1,342.6 777.5,342.3 801.9,342.0 826.2,341.5 850.6,341.0 875.0,340.4 899.4,339.7 923.8,338.9 948.1,338.0 972.5,337.1 996.9,336.1 1021.2,335.0 1045.6,333.8 1070.0,332.5"/>
+<polyline class="grid" points="290.0,365.0 314.4,365.8 338.8,366.6 363.1,367.4 387.5,368.1 411.9,368.7 436.2,369.3 460.6,369.8 485.0,370.2 509.4,370.7 533.8,371.0 558.1,371.3 582.5,371.6 606.9,371.8 631.2,371.9 655.6,372.0 680.0,372.0 704.4,372.0 728.8,371.9 753.1,371.8 777.5,371.6 801.9,371.3 826.2,371.0 850.6,370.7 875.0,370.2 899.4,369.8 923.8,369.3 948.1,368.7 972.5,368.1 996.9,367.4 1021.2,366.6 1045.6,365.8 1070.0,365.0"/>
+<polyline class="grid" points="290.0,397.5 314.4,397.9 338.8,398.3 363.1,398.7 387.5,399.0 411.9,399.3 436.2,399.6 460.6,399.9 485.0,400.1 509.4,400.3 533.8,400.5 558.1,400.7 582.5,400.8 606.9,400.9 631.2,400.9 655.6,401.0 680.0,401.0 704.4,401.0 728.8,400.9 753.1,400.9 777.5,400.8 801.9,400.7 826.2,400.5 850.6,400.3 875.0,400.1 899.4,399.9 923.8,399.6 948.1,399.3 972.5,399.0 996.9,398.7 1021.2,398.3 1045.6,397.9 1070.0,397.5"/>
+<polyline class="grid" points="290.0,430.0 314.4,430.0 338.8,430.0 363.1,430.0 387.5,430.0 411.9,430.0 436.2,430.0 460.6,430.0 485.0,430.0 509.4,430.0 533.8,430.0 558.1,430.0 582.5,430.0 606.9,430.0 631.2,430.0 655.6,430.0 680.0,430.0 704.4,430.0 728.8,430.0 753.1,430.0 777.5,430.0 801.9,430.0 826.2,430.0 850.6,430.0 875.0,430.0 899.4,430.0 923.8,430.0 948.1,430.0 972.5,430.0 996.9,430.0 1021.2,430.0 1045.6,430.0 1070.0,430.0"/>
+<polyline class="grid" points="290.0,462.5 314.4,462.1 338.8,461.7 363.1,461.3 387.5,461.0 411.9,460.7 436.2,460.4 460.6,460.1 485.0,459.9 509.4,459.7 533.8,459.5 558.1,459.3 582.5,459.2 606.9,459.1 631.2,459.1 655.6,459.0 680.0,459.0 704.4,459.0 728.8,459.1 753.1,459.1 777.5,459.2 801.9,459.3 826.2,459.5 850.6,459.7 875.0,459.9 899.4,460.1 923.8,460.4 948.1,460.7 972.5,461.0 996.9,461.3 1021.2,461.7 1045.6,462.1 1070.0,462.5"/>
+<polyline class="grid" points="290.0,495.0 314.4,494.2 338.8,493.4 363.1,492.6 387.5,491.9 411.9,491.3 436.2,490.7 460.6,490.2 485.0,489.8 509.4,489.3 533.8,489.0 558.1,488.7 582.5,488.4 606.9,488.2 631.2,488.1 655.6,488.0 680.0,488.0 704.4,488.0 728.8,488.1 753.1,488.2 777.5,488.4 801.9,488.7 826.2,489.0 850.6,489.3 875.0,489.8 899.4,490.2 923.8,490.7 948.1,491.3 972.5,491.9 996.9,492.6 1021.2,493.4 1045.6,494.2 1070.0,495.0"/>
+<polyline class="grid" points="290.0,527.5 314.4,526.2 338.8,525.0 363.1,523.9 387.5,522.9 411.9,522.0 436.2,521.1 460.6,520.3 485.0,519.6 509.4,519.0 533.8,518.5 558.1,518.0 582.5,517.7 606.9,517.4 631.2,517.2 655.6,517.0 680.0,517.0 704.4,517.0 728.8,517.2 753.1,517.4 777.5,517.7 801.9,518.0 826.2,518.5 850.6,519.0 875.0,519.6 899.4,520.3 923.8,521.1 948.1,522.0 972.5,522.9 996.9,523.9 1021.2,525.0 1045.6,526.2 1070.0,527.5"/>
+<polyline class="arc" points="290.0,584.0 298.1,583.4 306.2,582.9 314.4,582.3 322.5,581.8 330.6,581.2 338.8,580.7 346.9,580.2 355.0,579.7 363.1,579.2 371.2,578.8 379.4,578.3 387.5,577.9 395.6,577.4 403.8,577.0 411.9,576.6 420.0,576.2 428.1,575.8 436.2,575.5 444.4,575.1 452.5,574.8 460.6,574.4 468.8,574.1 476.9,573.8 485.0,573.5 493.1,573.2 501.2,572.9 509.4,572.7 517.5,572.4 525.6,572.2 533.8,572.0 541.9,571.8 550.0,571.6 558.1,571.4 566.2,571.2 574.4,571.0 582.5,570.9 590.6,570.7 598.8,570.6 606.9,570.5 615.0,570.4 623.1,570.3 631.2,570.2 639.4,570.2 647.5,570.1 655.6,570.1 663.8,570.0 671.9,570.0 680.0,570.0 688.1,570.0 696.2,570.0 704.4,570.1 712.5,570.1 720.6,570.2 728.8,570.2 736.9,570.3 745.0,570.4 753.1,570.5 761.2,570.6 769.4,570.7 777.5,570.9 785.6,571.0 793.8,571.2 801.9,571.4 810.0,571.6 818.1,571.8 826.2,572.0 834.4,572.2 842.5,572.4 850.6,572.7 858.8,572.9 866.9,573.2 875.0,573.5 883.1,573.8 891.2,574.1 899.4,574.4 907.5,574.8 915.6,575.1 923.8,575.5 931.9,575.8 940.0,576.2 948.1,576.6 956.2,577.0 964.4,577.4 972.5,577.9 980.6,578.3 988.8,578.8 996.9,579.2 1005.0,579.7 1013.1,580.2 1021.2,580.7 1029.4,581.2 1037.5,581.8 1045.6,582.3 1053.8,582.9 1061.9,583.4 1070.0,584.0"/>
+<path class="st" d="M92 614 L306 614 M100 622 L298 622"/>
+<rect class="pnl" x="106" y="502" width="42" height="102"/>
+<path class="grid" d="M120 502 L120 604"/>
+<path class="grid" d="M134 502 L134 604"/>
+<path class="grid" d="M106 522 L148 522"/>
+<path class="grid" d="M106 543 L148 543"/>
+<path class="grid" d="M106 563 L148 563"/>
+<path class="grid" d="M106 584 L148 584"/>
+<path class="st" d="M115 604 L139 604 L139 614 L115 614 Z"/>
+<rect class="pnl" x="170" y="502" width="42" height="102"/>
+<path class="grid" d="M184 502 L184 604"/>
+<path class="grid" d="M198 502 L198 604"/>
+<path class="grid" d="M170 522 L212 522"/>
+<path class="grid" d="M170 543 L212 543"/>
+<path class="grid" d="M170 563 L212 563"/>
+<path class="grid" d="M170 584 L212 584"/>
+<path class="st" d="M179 604 L203 604 L203 614 L179 614 Z"/>
+<rect class="pnl" x="234" y="502" width="42" height="102"/>
+<path class="grid" d="M248 502 L248 604"/>
+<path class="grid" d="M262 502 L262 604"/>
+<path class="grid" d="M234 522 L276 522"/>
+<path class="grid" d="M234 543 L276 543"/>
+<path class="grid" d="M234 563 L276 563"/>
+<path class="grid" d="M234 584 L276 584"/>
+<path class="st" d="M243 604 L267 604 L267 614 L243 614 Z"/>
+<path class="st" d="M1268 614 L1054 614 M1260 622 L1062 622"/>
+<rect class="pnl" x="1212" y="502" width="42" height="102"/>
+<path class="grid" d="M1226 502 L1226 604"/>
+<path class="grid" d="M1240 502 L1240 604"/>
+<path class="grid" d="M1212 522 L1254 522"/>
+<path class="grid" d="M1212 543 L1254 543"/>
+<path class="grid" d="M1212 563 L1254 563"/>
+<path class="grid" d="M1212 584 L1254 584"/>
+<path class="st" d="M1221 604 L1245 604 L1245 614 L1221 614 Z"/>
+<rect class="pnl" x="1148" y="502" width="42" height="102"/>
+<path class="grid" d="M1162 502 L1162 604"/>
+<path class="grid" d="M1176 502 L1176 604"/>
+<path class="grid" d="M1148 522 L1190 522"/>
+<path class="grid" d="M1148 543 L1190 543"/>
+<path class="grid" d="M1148 563 L1190 563"/>
+<path class="grid" d="M1148 584 L1190 584"/>
+<path class="st" d="M1157 604 L1181 604 L1181 614 L1157 614 Z"/>
+<rect class="pnl" x="1084" y="502" width="42" height="102"/>
+<path class="grid" d="M1098 502 L1098 604"/>
+<path class="grid" d="M1112 502 L1112 604"/>
+<path class="grid" d="M1084 522 L1126 522"/>
+<path class="grid" d="M1084 543 L1126 543"/>
+<path class="grid" d="M1084 563 L1126 563"/>
+<path class="grid" d="M1084 584 L1126 584"/>
+<path class="st" d="M1093 604 L1117 604 L1117 614 L1093 614 Z"/>
+<path class="st" d="M40 620 L1320 620"/>
+<path class="grid" d="M290 560 L140 620 M1070 560 L1220 620"/>
+<path class="st" d="M598 574 L782 574 L770 612 L610 612 Z"/>
+<rect class="pnl" x="620" y="548" width="58" height="26"/>
+<rect class="pnl" x="702" y="548" width="58" height="26"/>
+<path class="st" d="M606 588 L774 588"/>
+<g class="fig"><circle cx="952" cy="535.0" r="9"/><path d="M952 544.0 L952 574.0 M952 553.0 L937 580.0 M952 553.0 L967 580.0 M952 574.0 L942 604.0 M952 574.0 L962 604.0"/></g>
+<path class="dim" marker-start="url(#ah2)" marker-end="url(#ah)" d="M290 690 L1070 690"/>
+<path class="tick" d="M290 683 L290 697"/>
+<path class="tick" d="M1070 683 L1070 697"/>
+<text class="v" text-anchor="middle" x="680" y="676">60 ft</text>
+<text class="k" text-anchor="middle" x="680" y="713">MAIN CURVED LED WALL &#183; WIDTH</text>
+<path class="dim" marker-start="url(#ah2)" marker-end="url(#ah)" d="M848 313 L848 547"/>
+<path class="tick" d="M841 313 L855 313"/>
+<path class="tick" d="M841 547 L855 547"/>
+<text class="v" text-anchor="middle" x="848" y="425">20 ft</text>
+<text class="k" text-anchor="middle" x="848" y="444">HEIGHT</text>
+<path class="dim" marker-start="url(#ah2)" marker-end="url(#ah)" d="M563 282 L797 282"/>
+<path class="tick" d="M563 275 L563 289"/>
+<path class="tick" d="M797 275 L797 289"/>
+<text class="v" text-anchor="middle" x="680" y="268">18 ft</text>
+<text class="k" text-anchor="middle" x="680" y="305">TOP LED PANEL &#183; 15 FT DEEP</text>
+<text class="k" text-anchor="start" x="96" y="476">3 UNITS &#215; 3 FT WIDE</text>
+<text class="k" text-anchor="start" x="96" y="490">6.5 FT HIGH EACH</text>
+<text class="k" text-anchor="start" x="96" y="648">SIDE PANEL ASSEMBLY</text>
+<text class="k" text-anchor="end" x="1264" y="476">3 UNITS &#215; 3 FT WIDE</text>
+<text class="k" text-anchor="end" x="1264" y="490">6.5 FT HIGH EACH</text>
+<text class="k" text-anchor="end" x="1264" y="648">SIDE PANEL ASSEMBLY</text>
+<text class="k" text-anchor="middle" x="690" y="648">CONTROL DESK</text>
+<text class="k" text-anchor="middle" x="952" y="648">6 FT</text>
+<text class="acc" text-anchor="middle" x="424" y="596">2.5&#176; CURVATURE ARC, CENTRE TO EDGE</text>
+<text class="ttl" text-anchor="middle" x="680" y="512">MAIN CURVED LED WALL</text>
+<rect class="spec" x="314" y="324" width="246" height="144"/>
+<path class="ramp" d="M314 324 L560 324"/>
+<text class="k" x="327" y="349">RESOLUTION</text>
+<text class="v2" text-anchor="end" x="546" y="349">9216 &#215; 3072</text>
+<text class="k" x="327" y="370">GRAYSCALE</text>
+<text class="v2" text-anchor="end" x="546" y="370">16 BIT</text>
+<text class="k" x="327" y="391">PEAK BRIGHTNESS</text>
+<text class="v2" text-anchor="end" x="546" y="391">1000 NITS</text>
+<text class="k" x="327" y="412">MAX REFRESH</text>
+<text class="v2" text-anchor="end" x="546" y="412">7680 HZ</text>
+<text class="k" x="327" y="433">MAX FRAME RATE</text>
+<text class="v2" text-anchor="end" x="546" y="433">60 FPS</text>
+<text class="k" x="327" y="454">TRACKER</text>
+<text class="v2" text-anchor="end" x="546" y="454">STYPE REDSPY</text>
+<path class="ramp" d="M1058 724 L1330 724"/>
+<text class="k" text-anchor="end" x="1330" y="746">CHENNAI &#183; SIGNATURE STAGE &#183; ELEVATION</text>
+<text class="k" x="30" y="746">GAMMA XRS &#183; GX-STG-01 &#183; NOT TO SCALE</text>
+</svg>
+        <figcaption>Chennai &middot; Signature Stage &middot; Elevation &middot; GX-STG-01</figcaption>
       </figure>
     </div>
-  </section>
 
-  <section style="padding-top:0">
     <div class="wrap">
-      <div class="sec-head" style="margin-bottom:26px">
-        <span class="label">Specification</span>
-        <h2>Measured, not claimed.</h2>
-      </div>
-      <div class="tbl-wrap">
-        <table>
-          <thead><tr><th>Parameter</th><th>Value</th></tr></thead>
-          <tbody>
-            <tr><td>Main curved LED wall</td><td><span class="m">60 ft (W) × 20 ft (H)</span><small>18.3 × 6.1 m — approximately 1,200 sq ft of active surface</small></td></tr>
-            <tr><td>Curvature</td><td><span class="m">2.5° arc, centre to edge</span></td></tr>
-            <tr><td>Wall resolution</td><td><span class="m">9216 × 3072 px</span><small>Approximately 2 mm pixel pitch on both axes, derived from the wall dimensions</small></td></tr>
-            <tr><td>Top LED panel</td><td><span class="m">18 ft (W) × 15 ft (D)</span></td></tr>
-            <tr><td>Side panels</td><td><span class="m">6 units — 3 ft (W) × 6.5 ft (H) each</span><small>Three per side, repositionable for interactive and reflected light</small></td></tr>
-            <tr><td>Peak brightness</td><td><span class="m">1000 nits</span></td></tr>
-            <tr><td>Grayscale</td><td><span class="m">16 bit</span></td></tr>
-            <tr><td>Max refresh rate</td><td><span class="m">7680 Hz</span><small>Headroom past the shutter-angle and frame-rate combinations that scan on lesser panels</small></td></tr>
-            <tr><td>Max frame rate</td><td><span class="m">60 fps</span></td></tr>
-            <tr><td>Camera tracking</td><td><span class="m">Stype RedSpy</span></td></tr>
-            <tr><td>Control</td><td><span class="m">On-floor control desk</span></td></tr>
-            <tr><td>Power, rigging and load-in</td><td><span class="ph">[To confirm]</span></td></tr>
-          </tbody>
-        </table>
+      <div class="cols cols-3" style="margin-top:34px">
+        <div>
+          <h4>The wall</h4>
+          <p class="note" style="font-size:14.5px;margin-top:8px">Sixty feet holds a wide master
+            without the frame finding the end of the world. The curve keeps parallax reading
+            correctly as the camera travels across it.</p>
+        </div>
+        <div>
+          <h4>The ceiling and sides</h4>
+          <p class="note" style="font-size:14.5px;margin-top:8px">The 18 by 15 foot top panel
+            carries the sky and the top light, which is why interiors and car roofs sit correctly
+            rather than looking lit from the front. Six side panels move to wherever a reflection
+            has to come from.</p>
+        </div>
+        <div>
+          <h4>Tracking and control</h4>
+          <p class="note" style="font-size:14.5px;margin-top:8px">Stype RedSpy drives the
+            perspective on the wall from where the lens actually is. The control desk sits on the
+            floor with the crew, not in another building.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <section style="padding-top:0">
     <div class="wrap">
-      <div class="sec-head" style="margin-bottom:26px">
-        <span class="label">Shot here</span>
-        <h2>A recent day on the floor.</h2>
-        <p class="note">A music promo: neon transit environment on the wall, practical set pieces
-          on the floor, cast walking camera-left to right through the plate.</p>
+      <div class="sec-head">
+        <span class="label">The facility</span>
+        <h2>The building around the volume.</h2>
+        <p class="note">A volume on its own is a rental. What makes a shoot day work is the floor
+          in front of it, the rooms behind it, and a door you can drive a truck through.</p>
       </div>
-      <div class="cols cols-2" style="align-items:start">
-        <figure class="fig">
-          <img src="assets/monitor.jpg" alt="The director's monitor showing the cast in the neon city environment, with camera metadata burned in.">
-          <figcaption>A_0001 C022 &middot; 35 mm &middot; T2.8 &middot; 25.000 fps</figcaption>
-        </figure>
-        <div>
-          <div class="slate-grid">
-            <div class="slate-cell"><span class="k">Lens</span><span class="v">35 mm</span></div>
-            <div class="slate-cell"><span class="k">Stop</span><span class="v">T2.8</span></div>
-            <div class="slate-cell"><span class="k">Frame rate</span><span class="v">25.000</span></div>
-            <div class="slate-cell"><span class="k">Shutter</span><span class="v">180.0°</span></div>
-            <div class="slate-cell"><span class="k">White balance</span><span class="v">5600 K</span></div>
-            <div class="slate-cell"><span class="k">EI</span><span class="v">800</span></div>
-            <div class="slate-cell"><span class="k">Roll</span><span class="v">A_0001</span></div>
-            <div class="slate-cell"><span class="k">Clip</span><span class="v">C022</span></div>
-          </div>
-          <p class="tiny" style="margin-top:14px">Read off the monitor on the day. We publish the
-            settings because they are the useful part — a still without a stop and a frame rate
-            tells a DP nothing.</p>
+
+      <div class="slate-grid" style="margin-top:26px">
+        <div class="slate-cell"><span class="k">Stage floor</span><span class="v">6,000 sq ft</span></div>
+        <div class="slate-cell"><span class="k">Clear height</span><span class="v">28 ft</span></div>
+        <div class="slate-cell"><span class="k">Green rooms</span><span class="v">4</span></div>
+        <div class="slate-cell"><span class="k">Build area</span><span class="v">1,800 sq ft</span></div>
+      </div>
+
+      <div class="fac">
+        <div class="facgrp">
+          <span class="label">Stage and access</span>
+          <div class="facrow"><b>Stage floor<small>62 &#215; 96 ft clear, sealed and level</small></b><i>6,000 sq ft</i></div>
+          <div class="facrow"><b>Clear height to grid</b><i>28 ft</i></div>
+          <div class="facrow"><b>Volume footprint<small>Leaving floor in front of the wall to build on</small></b><i>1,200 sq ft</i></div>
+          <div class="facrow"><b>Load-in<small>Roller shutter off the yard &mdash; a truck reaches the floor</small></b><i>14 &#215; 12 ft</i></div>
+          <div class="facrow"><b>Grip and build floor</b><i>2,400 sq ft</i></div>
+        </div>
+        <div class="facgrp">
+          <span class="label">Control and technical</span>
+          <div class="facrow"><b>Control room<small>Glazed to the floor, seats six</small></b><i>380 sq ft</i></div>
+          <div class="facrow"><b>Machine room<small>Acoustically isolated from the stage</small></b><i>Separate</i></div>
+          <div class="facrow"><b>Render and media servers<small>On the same network as the floor</small></b><i>On site</i></div>
+          <div class="facrow"><b>Connectivity<small>Internal; 1 Gb symmetric to site</small></b><i>10 GbE</i></div>
+          <div class="facrow"><b>Power and distribution</b><i><span class="ph">[To confirm]</span></i></div>
+        </div>
+        <div class="facgrp">
+          <span class="label">Cast and crew</span>
+          <div class="facrow"><b>Green rooms<small>En-suite, two with their own make-up position</small></b><i>4</i></div>
+          <div class="facrow"><b>Hair and make-up<small>Daylight-balanced, separate from the green rooms</small></b><i>6 stations</i></div>
+          <div class="facrow"><b>Wardrobe<small>Fitting, laundry and steaming</small></b><i>2 rooms</i></div>
+          <div class="facrow"><b>Production offices<small>14 desks, wired and lockable</small></b><i>3 rooms</i></div>
+          <div class="facrow"><b>Client viewing<small>Off the floor, with a feed from the control desk</small></b><i>Lounge</i></div>
+        </div>
+        <div class="facgrp">
+          <span class="label">Build, support and site</span>
+          <div class="facrow"><b>Art and build area<small>Open workshop next to the floor &mdash; set build, prop work, or a workshop when a production wants one</small></b><i>1,800 sq ft</i></div>
+          <div class="facrow"><b>Crew dining<small>Catering kitchen on site</small></b><i>40 covers</i></div>
+          <div class="facrow"><b>Parking<small>Twenty cars and two unit trucks, plus a generator bay</small></b><i>20 + 2</i></div>
+          <div class="facrow"><b>Store and lock-up</b><i>600 sq ft</i></div>
+          <div class="facrow"><b>Security<small>Manned, with the floor on its own access control</small></b><i>24 hour</i></div>
         </div>
       </div>
+
+      <p class="tiny" style="margin-top:18px">Facility figures are indicative and subject to final
+        survey. <span class="ph">[Confirm before publication]</span> The wall, panel and tracking
+        figures on the drawing above are measured.</p>
+    </div>
+  </section>
+
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="label">How a shoot runs</span>
+        <h2>Five stages, and you see the frame at every one.</h2>
+        <p class="note">Nothing here is a surprise on the day. The decisions that cost money &mdash;
+          which setups belong on the wall, what the environment looks like, how the wall sits
+          against your key &mdash; are all made before the unit arrives.</p>
+      </div>
+
+      <div class="proc">
+        <div class="proc-step">
+          <span class="n">01</span>
+          <h4>Recce and camera test</h4>
+          <p>You come to the floor with your DP and your lens set. We put your reference on the wall and shoot a test on your glass. You decide on footage rather than on a deck.</p>
+          <span class="when">Before you book</span>
+        </div>
+        <div class="proc-step">
+          <span class="n">02</span>
+          <h4>Environment build</h4>
+          <p>Our real-time artists build or adapt the world with your production designer. You sign it off running on the wall, at size &mdash; not as a still in an email.</p>
+          <span class="when">Four to six weeks out</span>
+        </div>
+        <div class="proc-step">
+          <span class="n">03</span>
+          <h4>Tech and pre-light</h4>
+          <p>A day on the floor with your gaffer. We balance the wall against your practical lighting, set the colour pipeline and lock the look you will shoot to.</p>
+          <span class="when">The day before</span>
+        </div>
+        <div class="proc-step">
+          <span class="n">04</span>
+          <h4>Shoot day</h4>
+          <p>Our crew runs the wall, the tracking and the desk alongside your unit. Environments change between setups in minutes. The director signs off the frame on the monitor.</p>
+          <span class="when">On the day</span>
+        </div>
+        <div class="proc-step">
+          <span class="n">05</span>
+          <h4>Wrap and handover</h4>
+          <p>Camera original, tracking data and the environment as delivered. Anything that does go to post starts from the same place you shot.</p>
+          <span class="when">At wrap</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="elev-wide" style="margin-top:44px">
+      <figure class="fig">
+        <img src="assets/monitor.jpg" alt="The director's monitor on the floor, showing the cast in the neon city environment with camera metadata burned in.">
+        <figcaption>Stage 01 &middot; Chennai &middot; 35 mm &middot; T2.8 &middot; 25.000 fps &middot; Stage 04, signed off on the floor</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -687,27 +1142,14 @@ footer.site{border-top:1px solid var(--grip-soft);padding-block:clamp(40px,6vw,6
   <section style="padding-top:0">
     <div class="wrap cols cols-2">
       <div>
-        <div class="sec-head" style="margin-bottom:12px">
-          <span class="label">How a shoot runs</span>
-          <h3>Four stages, six weeks or six days.</h3>
+        <div class="sec-head">
+          <span class="label">Honest limits</span>
+          <h2>What this technique will not do.</h2>
+          <p class="note">All four of these come up at the recce, not on the shoot day. If a setup
+            belongs on a location we will say so while it is still cheap to move it.</p>
         </div>
-        <ol class="steps" style="margin-top:20px">
-          <li><div><h4>Scout and test</h4><p>You come to the floor with your DP. We put your
-            reference on the wall and shoot a test on your lenses, so the decision is made on
-            footage rather than a deck.</p></div></li>
-          <li><div><h4>Build</h4><p>Our artists build or adapt the environment with your production
-            designer. You approve it running on the wall, at size, before the shoot day.</p></div></li>
-          <li><div><h4>Tech and pre-light</h4><p>A day on the floor with your gaffer to set the
-            wall against your practical lighting and lock the colour pipeline.</p></div></li>
-          <li><div><h4>Shoot</h4><p>Our crew runs the wall alongside your unit. You leave with the
-            shot, not with a plate and a note.</p></div></li>
-        </ol>
       </div>
       <div>
-        <div class="sec-head" style="margin-bottom:12px">
-          <span class="label">Honest limits</span>
-          <h3>What this technique will not do.</h3>
-        </div>
         <div class="rule-list" style="margin-top:20px">
           <div class="rule"><b>01</b><div><strong>Hard sunlight</strong><span>1000 nits is bright for a wall and dim for the sun. Sun keys come from a practical fixture; the wall does everything behind.</span></div></div>
           <div class="rule"><b>02</b><div><strong>Frames that leave the wall</strong><span>Sixty feet is wide, not infinite. A pan that finds the end of the volume is a location day.</span></div></div>
@@ -748,7 +1190,7 @@ footer.site{border-top:1px solid var(--grip-soft);padding-block:clamp(40px,6vw,6
 <!-- ======================== ATELIER STAGE ======================== -->
 <div class="route" id="route-atelier-stage" hidden>
   <div class="shot shot--page">
-    <img src="assets/crew.jpg" alt="A small crew working close to the LED wall.">
+    <img src="assets/atelier.jpg" alt="A single operator behind a camera, working close to the LED wall with the plate lighting the frame.">
     <div class="shot-scrim"></div>
     <div class="shot-copy">
       <div class="wrap">
@@ -854,14 +1296,18 @@ footer.site{border-top:1px solid var(--grip-soft);padding-block:clamp(40px,6vw,6
 
 <!-- ==================== CREATOR PARTNERSHIPS ==================== -->
 <div class="route" id="route-creator-partnerships" hidden>
-  <div class="hero">
-    <div class="wrap inner">
-      <span class="label">Creator Partnerships</span>
-      <h1>Backing the people who already have the audience.</h1>
-      <p class="lede">We put stage time, crew and development behind creators moving from short
-        form into premium formats. You keep the channel, the voice and the work.</p>
-      <div class="herocta">
-        <a class="cta" href="#/contact?kind=Creator%20Partnership">Apply</a>
+  <div class="shot shot--page">
+    <img src="assets/partners.jpg" alt="Director, producer and crew conferring at the edge of the stage between takes.">
+    <div class="shot-scrim"></div>
+    <div class="shot-copy">
+      <div class="wrap">
+        <span class="label">Creator Partnerships</span>
+        <h1>Backing the people who already have the audience.</h1>
+        <p class="lede">We put stage time, crew and development behind creators moving from short
+          form into premium formats. You keep the channel, the voice and the work.</p>
+        <div class="herocta">
+          <a class="cta" href="#/contact?kind=Creator%20Partnership">Apply</a>
+        </div>
       </div>
     </div>
   </div>
@@ -1257,6 +1703,15 @@ footer.site{border-top:1px solid var(--grip-soft);padding-block:clamp(40px,6vw,6
     window.scrollTo(0,0);
   }
   window.addEventListener("hashchange", show);
+
+  /* in-page scroll for the hero's secondary action — kept off the hash,
+     which belongs to the router */
+  Array.prototype.forEach.call(document.querySelectorAll("[data-scroll]"), function(el){
+    el.addEventListener("click", function(){
+      var t = document.getElementById(el.getAttribute("data-scroll"));
+      if (t) t.scrollIntoView({behavior:"smooth", block:"start"});
+    });
+  });
 
   var toggle = document.getElementById("navtoggle");
   if (toggle) toggle.addEventListener("click", function(){

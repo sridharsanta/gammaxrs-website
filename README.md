@@ -7,7 +7,7 @@ open `index.html` in a browser and it works.
 
 ```
 index.html                        the website
-assets/                           photography and the stage elevation
+assets/                           photography
 brand/index.html                  the brand system, GX-BRAND-001 Rev A
 docs/brand-and-stage-reference.md the short version, plus what is still unconfirmed
 ```
@@ -18,6 +18,11 @@ A single page with hash routing — `#/`, `#/signature-stage`, `#/atelier-stage`
 `#/creator-partnerships`, `#/about`, `#/contact`, `#/enquiries`. One file keeps the whole
 identity in one place; splitting it into separate documents is a reasonable thing to do later,
 but it is not necessary to ship.
+
+The stage elevation on `#/signature-stage` is **inline SVG generated from the real dimensions**
+(`60 x 20 ft` wall, `2.5` degree arc, `18 x 15 ft` top panel, `3 x 6.5 ft` side panels). The
+generator is not in this repo; edit the SVG in place or ask for the script. The wall, panel and
+tracking figures on it are measured. The facility schedule below it is not — it is indicative.
 
 The Aperture is **generated in the page** from the parameters in section 03 of the brand system —
 17 blades per array, 23u pitch, a fixed 32u gate, smoothstep crown, parabolic bed. It is not an
@@ -64,8 +69,9 @@ placeholder for a fact. Search the source for `class="ph"` — every one is a de
 you:
 
 - Street address, PIN, bookings and partnerships email, phone
+- Signature Stage facility schedule — every figure in it is indicative pending survey
 - Atelier Stage LED panel size, pixel pitch, and the rate card
-- Signature Stage power, rigging and load-in
+- Signature Stage power and distribution
 - Current lead time and the Signature Stage rate card
 - Environment library catalogue
 - Creator Partnerships annual commitment
