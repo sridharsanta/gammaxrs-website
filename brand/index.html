@@ -1,0 +1,1485 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found]){display:none!important}</style></head><body>
+<title>Gamma XRS Brand System</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Michroma&family=JetBrains+Mono:wght@400;500;700&display=swap">
+
+<style>
+/* ============================================================
+   GAMMA XRS — BRAND SYSTEM
+   Single-theme by intent: the guide is set in the grading suite.
+   Every colour is painted explicitly; nothing inherits the host.
+   ============================================================ */
+
+:root{
+  /* --- Ground: the Void neutrals, biased violet --- */
+  --void:#080808;
+  --stage:#121016;
+  --rig:#1C1922;
+  --grip:#2E2A36;
+  --grip-soft:#221E2A;
+  --haze:#8E8899;
+  --scrim:#CFC9D6;
+  --bleach:#FFFFFF;
+  --ink:#171320;
+
+  /* --- Core --- */
+  --violet:#9721B0;
+  --violet-lift:#B84BD6;
+
+  /* --- The Spectrum (dark grounds) --- */
+  --photon:#F5EC9A;
+  --signal:#48A0F2;
+  --index:#4A5FE0;
+  --pulse:#E63DA4;
+
+  /* --- Spectrum Deep (light grounds) --- */
+  --ochre:#7A6208;
+  --signal-deep:#1265C4;
+  --index-deep:#3A4FD0;
+  --pulse-deep:#B0106F;
+
+  /* --- Mica (the XRS tail) --- */
+  --mica-a:#BF6BA3;
+  --mica-b:#D8D2D2;
+
+  /* --- Type --- */
+  --sans:'Archivo','Helvetica Neue',Helvetica,Arial,sans-serif;
+  --logo:'Michroma','Archivo','Helvetica Neue',Arial,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,'SF Mono',Menlo,Consolas,monospace;
+
+  /* --- Metrics --- */
+  --rail:238px;
+  --page:1180px;
+  --r:3px;
+
+  color-scheme:dark;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+
+body{
+  margin:0;
+  background:var(--void);
+  color:var(--scrim);
+  font-family:var(--sans);
+  font-size:17px;
+  line-height:1.62;
+  font-variation-settings:'wdth' 100;
+  -webkit-font-smoothing:antialiased;
+}
+
+::selection{background:var(--violet);color:#fff}
+
+a{color:var(--signal);text-decoration:none;border-bottom:1px solid rgba(72,160,242,.35)}
+a:hover{border-bottom-color:var(--signal)}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:2px}
+
+/* ---------- Type primitives ---------- */
+.label{
+  font-family:var(--mono);font-size:11px;font-weight:500;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--haze);
+}
+.mono{font-family:var(--mono);font-size:13px;letter-spacing:.01em;font-variant-numeric:tabular-nums}
+
+h1,h2,h3,h4{margin:0;text-wrap:balance;font-variation-settings:'wdth' 112}
+h2{font-size:clamp(28px,3.4vw,38px);line-height:1.08;font-weight:600;letter-spacing:-.015em;color:#F3F0F7}
+h3{font-size:20px;line-height:1.25;font-weight:600;letter-spacing:-.005em;color:#F3F0F7;font-variation-settings:'wdth' 106}
+h4{font-size:15px;line-height:1.3;font-weight:600;color:#F3F0F7;font-variation-settings:'wdth' 104}
+p{margin:0;max-width:66ch}
+
+.lede{font-size:19px;line-height:1.55;color:var(--scrim);max-width:60ch}
+.note{font-size:14.5px;line-height:1.55;color:var(--haze);max-width:64ch}
+.tiny{font-size:13px;line-height:1.5;color:var(--haze)}
+
+/* ---------- Shell ---------- */
+.shell{display:block}
+
+.rail{
+  position:fixed;inset:0 auto 0 0;width:var(--rail);
+  background:var(--void);border-right:1px solid var(--grip-soft);
+  padding:28px 0 28px 28px;overflow-y:auto;z-index:40;
+  display:none;flex-direction:column;gap:22px;
+}
+.rail-brand{display:flex;flex-direction:column;gap:10px;padding-right:28px}
+.rail-brand .mk{width:52px}
+.rail-brand .nm{font-family:var(--logo);font-size:11px;letter-spacing:.06em;color:#F3F0F7}
+.rail-nav{display:flex;flex-direction:column;gap:1px;padding-right:20px}
+.rail-nav a{
+  display:grid;grid-template-columns:26px 1fr;gap:8px;align-items:baseline;
+  padding:5px 0;border:0;color:var(--haze);font-size:13.5px;line-height:1.3;
+}
+.rail-nav a span{font-family:var(--mono);font-size:10.5px;color:#5A5468;letter-spacing:.06em}
+.rail-nav a:hover{color:#F3F0F7}
+.rail-nav a:hover span{color:var(--violet-lift)}
+.rail-foot{margin-top:auto;padding-right:28px;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:#4E4859;text-transform:uppercase}
+
+.main{padding:0}
+@media (min-width:1120px){
+  .rail{display:flex}
+  .main{margin-left:var(--rail)}
+}
+
+.wrap{max-width:var(--page);margin:0 auto;padding:0 28px}
+@media (min-width:760px){.wrap{padding:0 48px}}
+
+/* ---------- Sections ---------- */
+.sec{padding:84px 0 12px;scroll-margin-top:24px}
+.sec-head{
+  display:grid;gap:16px;padding-bottom:34px;margin-bottom:40px;
+  border-bottom:1px solid var(--grip);
+}
+.sec-num{
+  display:flex;align-items:center;gap:14px;
+}
+.sec-num b{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.2em;color:var(--violet-lift)}
+.sec-num i{flex:1;height:2px;background:linear-gradient(90deg,var(--photon),var(--signal) 28%,var(--index) 46%,var(--pulse) 72%,var(--violet));opacity:.55;max-width:200px}
+.sec-num em{font-family:var(--mono);font-size:11px;font-style:normal;letter-spacing:.18em;text-transform:uppercase;color:var(--haze)}
+
+.block{display:grid;gap:20px;margin-bottom:56px}
+.block:last-child{margin-bottom:0}
+
+.cols{display:grid;gap:28px}
+@media (min-width:820px){
+  .cols-2{grid-template-columns:1fr 1fr}
+  .cols-3{grid-template-columns:repeat(3,1fr)}
+  .cols-side{grid-template-columns:minmax(0,1fr) 300px;gap:40px;align-items:start}
+}
+
+/* ---------- Specimen frames: camera framing marks ---------- */
+.frame{
+  position:relative;border:1px solid var(--grip);border-radius:var(--r);
+  background:var(--stage);overflow:hidden;
+}
+.frame::before,.frame::after{
+  content:"";position:absolute;width:11px;height:11px;pointer-events:none;
+  border-color:var(--grip);border-style:solid;
+}
+.frame::before{top:9px;left:9px;border-width:1px 0 0 1px}
+.frame::after{bottom:9px;right:9px;border-width:0 1px 1px 0}
+.frame-cap{
+  display:flex;flex-wrap:wrap;gap:6px 16px;justify-content:space-between;align-items:baseline;
+  padding:10px 14px;border-top:1px solid var(--grip);background:var(--void);
+}
+.frame-cap .k{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--haze)}
+.frame-cap .v{font-family:var(--mono);font-size:11px;color:#6E6880;letter-spacing:.08em}
+
+.stagearea{display:grid;place-items:center;padding:56px 32px;min-height:190px;overflow-x:auto}
+@media (max-width:860px){.stagearea .lockup{font-size:min(var(--ls,34px),5.2vw)}}
+
+/* Grounds — every lockup context redefines the ramp via tokens */
+.g-void{background:var(--void);--s1:var(--photon);--s2:var(--signal);--s3:var(--index);--s4:var(--pulse);--s5:var(--violet);--wg:var(--violet-lift);--wx-a:var(--mica-a);--wx-b:var(--mica-b)}
+.g-bleach{background:#fff;--s1:var(--ochre);--s2:var(--signal-deep);--s3:var(--index-deep);--s4:var(--pulse-deep);--s5:var(--violet);--wg:var(--violet);--wx-a:var(--ink);--wx-b:var(--ink)}
+.g-scrim{background:#EDEAF1;--s1:var(--ochre);--s2:var(--signal-deep);--s3:var(--index-deep);--s4:var(--pulse-deep);--s5:var(--violet);--wg:var(--violet);--wx-a:var(--ink);--wx-b:var(--ink)}
+.g-violet{background:var(--violet);--s1:#fff;--s2:#fff;--s3:#fff;--s4:#fff;--s5:#fff;--wg:#fff;--wx-a:#fff;--wx-b:#fff}
+.g-plate{
+  background:
+    radial-gradient(120% 90% at 12% 8%, rgba(72,160,242,.42), transparent 58%),
+    radial-gradient(90% 80% at 88% 88%, rgba(230,61,164,.38), transparent 60%),
+    radial-gradient(60% 60% at 60% 30%, rgba(151,33,176,.30), transparent 70%),
+    #100C16;
+  --s1:#fff;--s2:#fff;--s3:#fff;--s4:#fff;--s5:#fff;--wg:#fff;--wx-a:#fff;--wx-b:#fff;
+}
+.g-mono-dark{background:var(--void);--s1:#F3F0F7;--s2:#F3F0F7;--s3:#F3F0F7;--s4:#F3F0F7;--s5:#F3F0F7;--wg:#F3F0F7;--wx-a:#F3F0F7;--wx-b:#F3F0F7}
+.g-mono-light{background:#fff;--s1:var(--ink);--s2:var(--ink);--s3:var(--ink);--s4:var(--ink);--s5:var(--ink);--wg:var(--ink);--wx-a:var(--ink);--wx-b:var(--ink)}
+
+/* ---------- The lockup ---------- */
+.lockup{display:flex;align-items:center;gap:var(--lg,0.74em);font-size:var(--ls,34px);line-height:1}
+.lockup .mark{width:calc(var(--ls,34px) * 2.6);height:auto;flex:none;display:block}
+.wordmark{
+  font-family:var(--logo);font-size:1em;letter-spacing:.015em;line-height:1;
+  white-space:nowrap;display:flex;gap:.42em;
+}
+.wordmark .wg{color:var(--wg)}
+.wordmark .wx{
+  background:linear-gradient(90deg,var(--wx-a),var(--wx-b));
+  -webkit-background-clip:text;background-clip:text;
+  -webkit-text-fill-color:transparent;color:transparent;
+}
+.lockup--stack{flex-direction:column;gap:.62em}
+.lockup--stack .mark{width:calc(var(--ls,34px) * 4.2)}
+
+/* mark ramp */
+.mark{display:block;width:100%;height:auto}
+.mark .bl{stroke-linejoin:round}
+
+/* ---------- Colour ---------- */
+.swatches{display:grid;gap:2px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.sw{
+  border:0;text-align:left;padding:0;font:inherit;color:inherit;cursor:pointer;
+  background:transparent;display:block;position:relative;
+}
+.sw-chip{height:104px;border-radius:2px 2px 0 0;position:relative;overflow:hidden}
+.sw-meta{padding:10px 2px 14px;display:grid;gap:3px}
+.sw-name{font-size:14px;font-weight:600;color:#F3F0F7;font-variation-settings:'wdth' 104}
+.sw-hex{font-family:var(--mono);font-size:11.5px;letter-spacing:.08em;color:var(--haze)}
+.sw-use{font-size:12.5px;line-height:1.4;color:#6E6880}
+.sw:hover .sw-chip{transform:translateY(-2px)}
+.sw-chip{transition:transform .18s ease}
+.sw::after{
+  content:"Copied";position:absolute;top:8px;right:8px;
+  font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+  background:#F3F0F7;color:var(--void);padding:3px 6px;border-radius:2px;
+  opacity:0;transition:opacity .2s ease;pointer-events:none;
+}
+.sw.copied::after{opacity:1}
+
+.ramp{height:76px;border-radius:2px;border:1px solid var(--grip)}
+.ramp--prime{background:linear-gradient(90deg,#F5EC9A 0%,#48A0F2 28%,#4A5FE0 46%,#E63DA4 72%,#9721B0 100%)}
+.ramp--deep{background:linear-gradient(90deg,#7A6208 0%,#1265C4 28%,#3A4FD0 46%,#B0106F 72%,#9721B0 100%)}
+.ramp--mica{background:linear-gradient(90deg,#BF6BA3,#D8D2D2)}
+
+/* ---------- Tables ---------- */
+.tbl-wrap{overflow-x:auto;border:1px solid var(--grip);border-radius:var(--r);min-width:0;max-width:100%}
+.block>*,.cols>*,.card>*,.apps>*{min-width:0}
+table{border-collapse:collapse;width:100%;min-width:520px}
+th,td{text-align:left;padding:11px 16px;border-bottom:1px solid var(--grip-soft);font-size:14px}
+th{
+  font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--haze);background:var(--stage);white-space:nowrap;
+}
+td{color:var(--scrim);vertical-align:top}
+tr:last-child td{border-bottom:0}
+td .m{font-family:var(--mono);font-size:12.5px;letter-spacing:.05em;font-variant-numeric:tabular-nums}
+.pass{color:#5BD6A0;font-family:var(--mono);font-size:11px;letter-spacing:.1em}
+.warn{color:var(--photon);font-family:var(--mono);font-size:11px;letter-spacing:.1em}
+.fail{color:#FF7A7A;font-family:var(--mono);font-size:11px;letter-spacing:.1em}
+.dot{display:inline-block;width:9px;height:9px;border-radius:50%;margin-right:8px;vertical-align:baseline;border:1px solid rgba(255,255,255,.14)}
+
+/* ---------- Cards / rules ---------- */
+.card{border:1px solid var(--grip);border-radius:var(--r);background:var(--stage);padding:22px;display:grid;gap:10px;align-content:start}
+.card .label{color:var(--violet-lift)}
+.rule-list{display:grid;gap:0;border:1px solid var(--grip);border-radius:var(--r);overflow:hidden}
+.rule{display:grid;grid-template-columns:34px 1fr;gap:14px;padding:16px 18px;border-bottom:1px solid var(--grip-soft);background:var(--stage)}
+.rule:last-child{border-bottom:0}
+.rule b{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.14em;color:var(--violet-lift);padding-top:3px}
+.rule div{display:grid;gap:4px}
+.rule strong{font-size:14.5px;font-weight:600;color:#F3F0F7}
+.rule span{font-size:13.5px;line-height:1.5;color:var(--haze)}
+
+.pill{
+  display:inline-flex;align-items:center;gap:7px;padding:4px 10px;border-radius:100px;
+  border:1px solid var(--grip);font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--haze);background:var(--stage);
+}
+
+/* ---------- Controls ---------- */
+.ctrls{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.btn{
+  font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+  padding:7px 12px;border:1px solid var(--grip);background:var(--stage);color:var(--haze);
+  border-radius:2px;cursor:pointer;transition:background .15s,color .15s,border-color .15s;
+}
+.btn:hover{color:#F3F0F7;border-color:#4A4458}
+.btn[aria-pressed="true"],.btn.on{background:var(--violet);border-color:var(--violet);color:#fff}
+
+/* ---------- Clear space / construction overlays ---------- */
+.overlay{position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .25s ease}
+.overlay.on{opacity:1}
+.cs-box{position:absolute;border:1px dashed rgba(230,61,164,.85)}
+.cs-fill{position:absolute;background:rgba(230,61,164,.10)}
+.cs-tag{
+  position:absolute;font-family:var(--mono);font-size:10px;letter-spacing:.12em;
+  color:#E63DA4;background:var(--void);padding:1px 5px;
+}
+
+/* ---------- Misuse ---------- */
+.misuse{display:grid;gap:2px;grid-template-columns:repeat(2,1fr)}
+@media (min-width:900px){.misuse{grid-template-columns:repeat(4,1fr)}}
+.mis{background:var(--stage);border:1px solid var(--grip);border-radius:2px;overflow:hidden}
+.mis-art{height:98px;display:grid;place-items:center;padding:16px;background:var(--void);position:relative}
+.mis-art .lockup{--ls:12px}
+.mis-cap{padding:10px 12px;display:grid;gap:2px;border-top:1px solid var(--grip)}
+.mis-cap strong{font-size:12.5px;font-weight:600;color:#FF7A7A;font-family:var(--mono);letter-spacing:.06em}
+.mis-cap span{font-size:12.5px;line-height:1.4;color:var(--haze)}
+.x-stretch .lockup{transform:scaleX(1.45)}
+.x-rot .lockup{transform:rotate(-9deg)}
+.x-shadow .lockup{filter:drop-shadow(0 5px 7px rgba(230,61,164,.85))}
+.x-recolor{--s1:#38D97A;--s2:#38D97A;--s3:#0E8F45;--s4:#0E8F45;--s5:#0E8F45;--wg:#38D97A;--wx-a:#38D97A;--wx-b:#38D97A}
+.x-crowd{padding:0 !important}
+.x-crowd .lockup{--ls:13px}
+.x-outline .lockup .mark .bl{fill:none !important;stroke:#F3F0F7 !important;stroke-width:2 !important}
+.x-outline .wordmark .wg{color:transparent;-webkit-text-stroke:1px #F3F0F7}
+.x-busy{background:
+  repeating-linear-gradient(45deg,#2b2b2b 0 8px,#3a3a3a 8px 16px),
+  #333 !important}
+
+/* ---------- Type specimens ---------- */
+.spec{border:1px solid var(--grip);border-radius:var(--r);background:var(--stage);padding:22px;display:grid;gap:14px}
+.spec-row{display:grid;grid-template-columns:1fr;gap:6px;padding-bottom:14px;border-bottom:1px solid var(--grip-soft)}
+.spec-row:last-child{border-bottom:0;padding-bottom:0}
+.spec-meta{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:#6E6880}
+.spec-art{color:#F3F0F7;overflow:hidden}
+.t-d1{font-size:clamp(34px,5.6vw,62px);line-height:1.02;font-weight:700;letter-spacing:-.025em;font-variation-settings:'wdth' 118}
+.t-d2{font-size:clamp(26px,3.6vw,40px);line-height:1.08;font-weight:600;letter-spacing:-.018em;font-variation-settings:'wdth' 114}
+.t-h1{font-size:26px;line-height:1.18;font-weight:600;letter-spacing:-.01em;font-variation-settings:'wdth' 110}
+.t-b{font-size:17px;line-height:1.62;font-weight:400;color:var(--scrim);font-variation-settings:'wdth' 100}
+.t-l{font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--haze)}
+.t-m{font-family:var(--mono);font-size:14px;letter-spacing:.02em;color:var(--signal);font-variant-numeric:tabular-nums}
+.t-logo{font-family:var(--logo);font-size:clamp(20px,3.2vw,34px);letter-spacing:.015em;color:#F3F0F7}
+
+/* ---------- Applications ---------- */
+.apps{display:grid;gap:20px}
+@media (min-width:760px){.apps{grid-template-columns:1fr 1fr}}
+
+.card-art{
+  aspect-ratio:1.586;border-radius:5px;padding:22px;display:flex;flex-direction:column;
+  justify-content:space-between;position:relative;overflow:hidden;
+}
+.card-front{background:var(--void);border:1px solid var(--grip)}
+.card-back{background:#fff;border:1px solid #E2DEE8}
+.card-front .lockup{--ls:15px}
+.card-edge{position:absolute;left:0;right:0;bottom:0;height:5px;
+  background:linear-gradient(90deg,#F5EC9A,#48A0F2 28%,#4A5FE0 46%,#E63DA4 72%,#9721B0)}
+.cd-name{font-size:15px;font-weight:600;color:#F3F0F7;font-variation-settings:'wdth' 106}
+.cd-role{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--haze);margin-top:3px}
+.cd-cont{font-family:var(--mono);font-size:10px;letter-spacing:.06em;color:#6E6880;line-height:1.7;margin-top:12px}
+.card-back .cd-name{color:var(--ink)}
+.card-back .cd-role{color:#6B6478}
+.card-back .cd-cont{color:#6B6478}
+
+.slate{
+  background:var(--void);border:1px solid var(--grip);border-radius:var(--r);
+  padding:20px;display:grid;gap:14px;
+}
+.slate-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--grip);border:1px solid var(--grip)}
+.slate-cell{background:var(--stage);padding:10px 12px;display:grid;gap:3px}
+.slate-cell .k{font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:#6E6880}
+.slate-cell .v{font-family:var(--mono);font-size:13px;color:#F3F0F7;font-variant-numeric:tabular-nums}
+
+.avatars{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.av{width:78px;height:78px;border-radius:18px;display:grid;place-items:center;overflow:hidden;border:1px solid var(--grip)}
+.av--sq{border-radius:4px}
+.av--circle{border-radius:50%}
+.av .glyph{font-family:var(--logo);font-size:36px;line-height:1}
+
+.hero-web{
+  border:1px solid var(--grip);border-radius:var(--r);overflow:hidden;background:var(--void);
+}
+.hero-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 18px;border-bottom:1px solid var(--grip)}
+.hero-bar .lockup{--ls:14px}
+.hero-nav{display:flex;gap:18px}
+.hero-nav span{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--haze)}
+.hero-body{padding:44px 26px 40px;display:grid;gap:18px;
+  background:radial-gradient(80% 120% at 78% 0%,rgba(151,33,176,.20),transparent 62%)}
+.hero-body h3{font-size:clamp(24px,3.6vw,38px);line-height:1.06;letter-spacing:-.02em;font-variation-settings:'wdth' 116;font-weight:700}
+.hero-cta{display:inline-flex;align-items:center;gap:9px;padding:11px 18px;background:var(--violet);color:#fff;
+  border-radius:2px;font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;width:fit-content}
+
+/* ---------- Cover ---------- */
+.cover{
+  min-height:min(88vh,760px);display:grid;align-content:center;gap:34px;
+  padding:96px 0 72px;position:relative;
+}
+.cover-mark{width:min(320px,58vw)}
+.cover h1{
+  font-size:clamp(38px,6.6vw,80px);line-height:.98;letter-spacing:-.035em;font-weight:700;
+  font-variation-settings:'wdth' 118;color:#F3F0F7;max-width:14ch;
+}
+.cover .lede{font-size:clamp(17px,1.7vw,20px);max-width:52ch}
+.cover-meta{display:flex;flex-wrap:wrap;gap:10px 34px;padding-top:8px}
+.cover-meta div{display:grid;gap:3px}
+.cover-meta .k{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#5A5468}
+.cover-meta .v{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;color:var(--scrim)}
+
+/* blade entrance */
+.mark .bl{transform-origin:var(--ox,150px) var(--oy,96px)}
+.anim .bl{transform:scaleY(.02);opacity:0}
+.anim.run .bl{transform:scaleY(1);opacity:1;transition:transform .62s cubic-bezier(.16,.84,.34,1),opacity .4s ease}
+
+footer{
+  border-top:1px solid var(--grip);margin-top:92px;padding:44px 0 64px;
+  display:grid;gap:12px;
+}
+footer .fl{display:flex;flex-wrap:wrap;gap:10px 28px;align-items:center;justify-content:space-between}
+
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.001ms !important;transition-duration:.001ms !important}
+  .anim .bl{transform:none;opacity:1}
+}
+</style>
+
+<div class="shell">
+
+<!-- ===================== RAIL ===================== -->
+<nav class="rail" aria-label="Sections">
+  <div class="rail-brand">
+    <div class="mk g-void" id="railmark"></div>
+    <div class="nm">GAMMA XRS</div>
+    <div class="label" style="letter-spacing:.16em">Brand system v1.0</div>
+  </div>
+  <div class="rail-nav">
+    <a href="#s01"><span>01</span>Foundation</a>
+    <a href="#s02"><span>02</span>Two modes</a>
+    <a href="#s03"><span>03</span>The Aperture</a>
+    <a href="#s04"><span>04</span>Lockups</a>
+    <a href="#s05"><span>05</span>Clear space &amp; size</a>
+    <a href="#s06"><span>06</span>Grounds</a>
+    <a href="#s07"><span>07</span>Misuse</a>
+    <a href="#s08"><span>08</span>Colour</a>
+    <a href="#s09"><span>09</span>Typography</a>
+    <a href="#s10"><span>10</span>Motion</a>
+    <a href="#s11"><span>11</span>Art direction</a>
+    <a href="#s12"><span>12</span>Applications</a>
+    <a href="#s13"><span>13</span>Voice</a>
+    <a href="#s14"><span>14</span>Governance</a>
+  </div>
+  <div class="rail-foot">Rev A · 2026</div>
+</nav>
+
+<main class="main">
+<div class="wrap">
+
+<!-- ===================== COVER ===================== -->
+<header class="cover">
+  <div class="cover-mark g-void" id="covermark"></div>
+  <h1>The Gamma XRS brand system</h1>
+  <p class="lede">A virtual production studio and a technology company, held together by one identity. This document is the specification: what the marks are, how they are built, and where each one is allowed to go.</p>
+  <div class="cover-meta">
+    <div><span class="k">Document</span><span class="v">GX-BRAND-001</span></div>
+    <div><span class="k">Revision</span><span class="v">A — 2026</span></div>
+    <div><span class="k">Owner</span><span class="v">Brand &amp; Communications</span></div>
+    <div><span class="k">Status</span><span class="v">Active</span></div>
+  </div>
+</header>
+
+<!-- ===================== 01 FOUNDATION ===================== -->
+<section class="sec" id="s01">
+  <div class="sec-head">
+    <div class="sec-num"><b>01</b><i></i><em>Foundation</em></div>
+    <h2>A production company with a research department</h2>
+    <p class="lede">Gamma XRS sits in an unusual place: we run the stage and we build the software that drives it. The identity has to carry both without splitting in two.</p>
+  </div>
+
+  <div class="block">
+    <div class="cols cols-2">
+      <div class="card">
+        <span class="label">Positioning</span>
+        <p>Gamma XRS operates LED volumes and builds the real-time pipeline behind them — camera tracking, colour management, scene delivery. We are the only party on a production who owns both the stage and the code running on it, which is why the image holds up when the schedule doesn't.</p>
+      </div>
+      <div class="card">
+        <span class="label">Promise</span>
+        <p style="font-family:var(--sans);font-size:26px;line-height:1.15;font-weight:600;letter-spacing:-.015em;color:#F3F0F7;font-variation-settings:'wdth' 110">Final pixel, on the day.</p>
+        <p class="note">Six words. Use as the sign-off on decks, the hero line on the site, and the tagline in the stacked lockup. Do not paraphrase it — a promise that changes wording stops being a promise.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Principles</h3>
+    <p class="note">These govern the work before they govern the design. When a brand decision is contested, resolve it against this list in order.</p>
+    <div class="rule-list">
+      <div class="rule"><b>P1</b><div><strong>Photoreal is a measurement, not an opinion.</strong><span>We publish our colour maths, our latency figures and our tracking tolerances. Marketing claims must be traceable to a number someone on the floor can reproduce.</span></div></div>
+      <div class="rule"><b>P2</b><div><strong>The stage serves the story.</strong><span>Technology is never the subject of our communication. The frame it produced is. Lead with the shot; put the rig in the caption.</span></div></div>
+      <div class="rule"><b>P3</b><div><strong>Ship the tool, not the demo.</strong><span>We show software that crews use in production, in the state crews use it. No mocked interfaces, no aspirational screenshots.</span></div></div>
+      <div class="rule"><b>P4</b><div><strong>Colour is a contract.</strong><span>Our palette is defined in hex, in Rec.709 and in P3, and the spectrum ramp is a fixed sequence of five stops. It is not a mood — it is a spec other people build against.</span></div></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Personality</h3>
+    <div class="cols cols-2">
+      <div class="rule-list">
+        <div class="rule"><b>IS</b><div><strong>Precise</strong><span>Numbers, tolerances, named parts. We say 4.2 ms, not "near-zero latency".</span></div></div>
+        <div class="rule"><b>IS</b><div><strong>Cinematic</strong><span>We understand shot, grade, and the value of restraint. Space is part of the composition.</span></div></div>
+        <div class="rule"><b>IS</b><div><strong>Direct</strong><span>Short sentences. The answer before the reasoning.</span></div></div>
+      </div>
+      <div class="rule-list">
+        <div class="rule"><b>NOT</b><div><strong>Clinical</strong><span>Precision without warmth reads as a lab report. There are people on the floor.</span></div></div>
+        <div class="rule"><b>NOT</b><div><strong>Theatrical</strong><span>No lens flares, no "revolutionary", no countdown teasers. The work is the drama.</span></div></div>
+        <div class="rule"><b>NOT</b><div><strong>Blunt</strong><span>Direct is not curt. We explain the trade-off; we just do it in three lines.</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>The name</h3>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Rule</th><th>Correct</th><th>Incorrect</th></tr></thead>
+        <tbody>
+          <tr><td>Full name, first mention</td><td><span class="m">Gamma XRS</span></td><td><span class="m">GammaXRS · Gamma-XRS · gamma xrs</span></td></tr>
+          <tr><td>Short form, internal only</td><td><span class="m">Gamma</span></td><td><span class="m">XRS</span> alone — reads as a product code</td></tr>
+          <tr><td>Case in body copy</td><td><span class="m">Gamma XRS</span> — title case</td><td><span class="m">GAMMA XRS</span> — the all-caps form belongs to the logotype only</td></tr>
+          <tr><td>Possessive</td><td><span class="m">Gamma XRS's pipeline</span></td><td><span class="m">Gamma XRS' pipeline</span></td></tr>
+          <tr><td>Products</td><td><span class="m">Gamma XRS Volume One</span></td><td><span class="m">XRS Volume One</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Boilerplate</h3>
+    <div class="card">
+      <span class="label">45 words — use verbatim</span>
+      <p>Gamma XRS is a virtual production studio and technology company. We operate LED volumes and build the real-time pipeline that drives them — camera tracking, colour management and scene delivery — so filmmakers capture final-pixel images in camera, on the day, with the grade already agreed.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 02 MODES ===================== -->
+<section class="sec" id="s02">
+  <div class="sec-head">
+    <div class="sec-num"><b>02</b><i></i><em>Two modes</em></div>
+    <h2>One core, two surfaces</h2>
+    <p class="lede">The identity runs in two expressions. They share the marks, the palette and the typefaces exactly — what changes is density, how much of the spectrum is on screen, and whether the page leads with an image or a diagram.</p>
+  </div>
+
+  <div class="block">
+    <div class="cols cols-2">
+      <div class="card" style="border-color:#3A3244">
+        <span class="label" style="color:var(--pulse)">Mode A — Studio</span>
+        <h4>Client-facing. Everything a filmmaker sees.</h4>
+        <p class="note">Reels, capabilities decks, stage tours, festival and awards material, social.</p>
+        <div class="tbl-wrap" style="border:0">
+          <table style="min-width:0">
+            <tbody>
+              <tr><td style="width:120px;color:var(--haze)">Ground</td><td><span class="m">Void #080808</span>, full bleed</td></tr>
+              <tr><td style="color:var(--haze)">Spectrum</td><td>One accent only. The mark carries the colour; the layout does not.</td></tr>
+              <tr><td style="color:var(--haze)">Type</td><td>Archivo Expanded, large, few words. Mono almost absent.</td></tr>
+              <tr><td style="color:var(--haze)">Density</td><td>Low. One idea per screen, generous margins.</td></tr>
+              <tr><td style="color:var(--haze)">Leads with</td><td>The frame. Photography and plates.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card" style="border-color:#3A3244">
+        <span class="label" style="color:var(--signal)">Mode B — Technology</span>
+        <h4>Practitioner-facing. Everything an engineer sees.</h4>
+        <p class="note">Docs, product UI, spec sheets, technical talks, recruitment, GitHub.</p>
+        <div class="tbl-wrap" style="border:0">
+          <table style="min-width:0">
+            <tbody>
+              <tr><td style="width:120px;color:var(--haze)">Ground</td><td><span class="m">Stage #121016</span> panels on Void, or white for print</td></tr>
+              <tr><td style="color:var(--haze)">Spectrum</td><td>Functional. The five stops encode series, state or channel.</td></tr>
+              <tr><td style="color:var(--haze)">Type</td><td>Archivo at normal width; JetBrains Mono active for every value.</td></tr>
+              <tr><td style="color:var(--haze)">Density</td><td>High. Tables, grids, hairline rules at 1px.</td></tr>
+              <tr><td style="color:var(--haze)">Leads with</td><td>The diagram. Signal paths and measurements.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p class="note">A piece is in one mode or the other. The failure case is a deck that opens cinematic and turns into a spec sheet on slide four with no change in treatment — decide which audience the document is for, then commit for its whole length.</p>
+  </div>
+</section>
+
+<!-- ===================== 03 THE APERTURE ===================== -->
+<section class="sec" id="s03">
+  <div class="sec-head">
+    <div class="sec-num"><b>03</b><i></i><em>The symbol</em></div>
+    <h2>The Aperture</h2>
+    <p class="lede">Two opposing arrays of spectral blades, separated by a gate. Read one way it is a lens closing on a subject; read the other it is a spectrum plotted against wavelength. Both readings are true, which is the point.</p>
+  </div>
+
+  <div class="block">
+    <div class="cols cols-side">
+      <div>
+        <div class="frame g-void">
+          <div class="stagearea" style="padding:44px 24px">
+            <div id="anatomy" style="width:100%;max-width:520px"></div>
+          </div>
+          <div class="frame-cap">
+            <span class="k">The Aperture — construction</span>
+            <span class="v" id="anatomyState">GRID OFF</span>
+          </div>
+        </div>
+        <div class="ctrls" style="margin-top:14px">
+          <button class="btn" id="gridBtn" aria-pressed="false">Construction grid</button>
+          <button class="btn" id="replayBtn">Replay build</button>
+        </div>
+      </div>
+      <div style="display:grid;gap:18px">
+        <div>
+          <span class="label">Named parts</span>
+          <div class="rule-list" style="margin-top:10px">
+            <div class="rule" style="grid-template-columns:1fr"><div><strong>Arch</strong><span>The parabola both arrays stand on. It rises 40u from centre to outer blade and is the reason the symbol reads as a lens rather than a bar chart.</span></div></div>
+            <div class="rule" style="grid-template-columns:1fr"><div><strong>Crown</strong><span>The upper array. Seventeen blades, tallest at the outer edges, collapsing to a 12u nub at centre.</span></div></div>
+            <div class="rule" style="grid-template-columns:1fr"><div><strong>Bed</strong><span>The lower array. Seventeen blades, inverted — deepest at centre, shortest at the edges.</span></div></div>
+            <div class="rule" style="grid-template-columns:1fr"><div><strong>Gate</strong><span>The clear band between crown and bed, riding the arch. Fixed at 32u. The gate never closes and never widens.</span></div></div>
+            <div class="rule" style="grid-template-columns:1fr"><div><strong>Ramp</strong><span>A single vertical gradient sampled across the full symbol height, so every blade takes its colour from where it sits, not from an index.</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Construction</h3>
+    <p class="note">The symbol is generated, not drawn. Given the unit <span class="m">u</span> — one two-hundredth of the symbol's bounding height — every dimension follows from the nine values below and two curves. Any redraw must reproduce these exactly.</p>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>Parameter</th><th>Value</th><th>Governs</th></tr></thead>
+        <tbody>
+          <tr><td>Blade count, per array</td><td><span class="m">17</span></td><td>Odd, so a single blade sits on the centre axis and symmetry is verifiable</td></tr>
+          <tr><td>Pitch</td><td><span class="m">23u</span></td><td>Centre-to-centre spacing, constant across both arrays</td></tr>
+          <tr><td>Blade width</td><td><span class="m">16u</span> at base</td><td>Leaves a 5u channel after the round join; narrower and the symbol fills in at small sizes</td></tr>
+          <tr><td>Bounding box</td><td><span class="m">386 &times; 200u</span></td><td>Aspect 1.93 : 1. Never letterboxed or padded to another ratio.</td></tr>
+          <tr><td>Arch rise</td><td><span class="m">40u</span></td><td>Both arrays sit on <span class="m">axis(t) = 89 + 40t²</span>, t measured &minus;1 to 1 across the width</td></tr>
+          <tr><td>Gate</td><td><span class="m">32u</span>, constant</td><td>Crown baseline to bed baseline, centred on the arch</td></tr>
+          <tr><td>Crown height</td><td><span class="m">12u → 111u</span></td><td>Smoothstep: <span class="m">12 + 99·S(|t|)</span> where <span class="m">S(x) = x²(3−2x)</span></td></tr>
+          <tr><td>Bed height</td><td><span class="m">95u → 12u</span></td><td>Parabolic: <span class="m">95 − 83t²</span>. Deepest at centre.</td></tr>
+          <tr><td>Tip radius</td><td><span class="m">1u</span></td><td>Applied as a round join. Sharp points fringe on screen and clog in print.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note" style="margin-top:16px">The smoothstep is deliberate. A linear falloff produces a bar chart; a power curve produces a spike. <span class="m">x²(3−2x)</span> — the same ease used in every shader ramp on our own stage — eases out of the centre and eases into the outer blade, which is what gives the crown its optical curve. It is the one place in this identity where the maths of the work shows up in the mark.</p>
+  </div>
+
+  <div class="block">
+    <h3>What changed from the first draft</h3>
+    <div class="cols cols-2">
+      <div class="rule-list">
+        <div class="rule"><b>01</b><div><strong>True symmetry</strong><span>Blade heights in the draft differed by up to 9u between mirrored pairs, and the arrays had no shared centre. Both arrays are now 17 blades on one axis, mirrored exactly.</span></div></div>
+        <div class="rule"><b>02</b><div><strong>Regularised pitch</strong><span>Spacing drifted from 16 to 18 units across the width. Pitch is now constant at 23u, so the symbol holds its rhythm when scaled down.</span></div></div>
+        <div class="rule"><b>03</b><div><strong>A constant gate</strong><span>The clear band narrowed from 33u at the edges to 21u at centre, which read as a drawing error rather than a device. It is now fixed at 32u and rides the arch.</span></div></div>
+      </div>
+      <div class="rule-list">
+        <div class="rule"><b>04</b><div><strong>One ramp, not many</strong><span>Colour was assigned per blade and repeated unpredictably down the bed. A single vertical gradient now spans the symbol, so the sequence is fixed and reproducible in any tool.</span></div></div>
+        <div class="rule"><b>05</b><div><strong>A light-ground ramp</strong><span>The original ramp opens on pale yellow, which is invisible on white. Spectrum Deep replaces it below — see section 06.</span></div></div>
+        <div class="rule"><b>06</b><div><strong>A lift for the logotype</strong><span>Gamma Violet at <span class="m">#9721B0</span> sits at 3.0:1 on Void. A lifted violet is now specified for dark grounds at small sizes.</span></div></div>
+      </div>
+    </div>
+    <p class="note">The typography of the logotype is unchanged — it was already right. Everything above is geometry, colour and reproduction.</p>
+  </div>
+</section>
+
+<!-- ===================== 04 LOCKUPS ===================== -->
+<section class="sec" id="s04">
+  <div class="sec-head">
+    <div class="sec-num"><b>04</b><i></i><em>Lockups</em></div>
+    <h2>Four lockups, one hierarchy</h2>
+    <p class="lede">Use the highest lockup in this list that fits the space. Reaching for the symbol alone because it looks cleaner is the most common identity failure — the symbol only earns solo billing once the name is already established in context.</p>
+  </div>
+
+  <div class="block">
+    <div class="cols cols-2">
+      <div class="frame g-void">
+        <div class="stagearea"><div class="lockup" style="--ls:30px" data-lockup="h"></div></div>
+        <div class="frame-cap"><span class="k">A — Primary horizontal</span><span class="v">DEFAULT · ALL MEDIA</span></div>
+      </div>
+      <div class="frame g-void">
+        <div class="stagearea"><div class="lockup lockup--stack" style="--ls:24px" data-lockup="v"></div></div>
+        <div class="frame-cap"><span class="k">B — Stacked</span><span class="v">SQUARE &amp; TALL FORMATS</span></div>
+      </div>
+      <div class="frame g-void">
+        <div class="stagearea"><div style="width:190px" data-lockup="mark"></div></div>
+        <div class="frame-cap"><span class="k">C — Aperture, solo</span><span class="v">ESTABLISHED CONTEXT ONLY</span></div>
+      </div>
+      <div class="frame g-void">
+        <div class="stagearea">
+          <div style="display:flex;gap:16px;align-items:center">
+            <div class="av g-void" style="background:var(--void);border-color:var(--grip)"><span class="glyph" style="color:var(--violet-lift)">&#947;</span></div>
+            <div class="av av--sq g-void" style="background:var(--violet)"><span class="glyph" style="color:#fff">&#947;</span></div>
+            <div class="av av--circle g-void" style="background:#fff"><span class="glyph" style="color:var(--violet)">&#947;</span></div>
+          </div>
+        </div>
+        <div class="frame-cap"><span class="k">D — The Gamma glyph</span><span class="v">FAVICON · APP ICON · &le;32PX</span></div>
+      </div>
+    </div>
+    <div class="cols cols-2" style="margin-top:20px">
+      <p class="note"><strong style="color:#F3F0F7">On the glyph.</strong> Gamma is also the transfer function that maps light to code value — the single most consequential curve in our work. Borrowing the letter as the small-size mark is not decoration; it is the one piece of the identity that means something specific to a colourist.</p>
+      <p class="note"><strong style="color:#F3F0F7">Choosing between A and B.</strong> Horizontal is the default and should be used wherever the container is wider than 2.6:1. Below that, switch to stacked rather than shrinking the horizontal lockup to fit — a lockup that clears the minimum size but sits in a sliver of white space reads as an afterthought.</p>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>The tagline lockup</h3>
+    <div class="frame g-void">
+      <div class="stagearea" style="padding:64px 32px">
+        <div style="display:grid;gap:18px;justify-items:center">
+          <div class="lockup" style="--ls:26px" data-lockup="h"></div>
+          <div style="width:100%;max-width:340px;height:1px;background:var(--grip)"></div>
+          <div style="font-family:var(--mono);font-size:11px;letter-spacing:.34em;text-transform:uppercase;color:var(--haze)">Final pixel, on the day</div>
+        </div>
+      </div>
+      <div class="frame-cap"><span class="k">E — Tagline lockup</span><span class="v">TITLE CARDS · DECK COVERS · STAND GRAPHICS</span></div>
+    </div>
+    <p class="note">The tagline is set in JetBrains Mono, uppercase, 0.34em tracking, at 0.42&times; the logotype cap height, separated by a 1px rule at 1&times; the logotype width. Never set the tagline in Michroma — two techno faces stacked cancel each other out.</p>
+  </div>
+</section>
+
+<!-- ===================== 05 CLEAR SPACE ===================== -->
+<section class="sec" id="s05">
+  <div class="sec-head">
+    <div class="sec-num"><b>05</b><i></i><em>Clear space &amp; size</em></div>
+    <h2>Give it the gate</h2>
+    <p class="lede">Clear space is measured in <b style="font-family:var(--mono);color:var(--pulse);font-size:.9em">G</b> — the cap height of the logotype's G. It is derived from the artwork, so it scales automatically and never needs recalculating.</p>
+  </div>
+
+  <div class="block">
+    <div class="frame g-void">
+      <div class="stagearea" style="padding:80px 40px">
+        <div style="position:relative;display:inline-block" id="csHolder">
+          <div class="lockup" style="--ls:32px" data-lockup="h"></div>
+          <div class="overlay on" id="csOverlay"></div>
+        </div>
+      </div>
+      <div class="frame-cap"><span class="k">Minimum clear space — 1&times;G on all four sides</span><span class="v" id="csState">OVERLAY ON</span></div>
+    </div>
+    <div class="ctrls" style="margin-top:14px">
+      <button class="btn on" id="csBtn" aria-pressed="true">Clear-space overlay</button>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="cols cols-2">
+      <div>
+        <h3>Clear space</h3>
+        <div class="rule-list" style="margin-top:14px">
+          <div class="rule"><b>MIN</b><div><strong>1 &times; G on all sides</strong><span>Absolute floor. Nothing — type, image edge, rule, fold, trim — enters this zone.</span></div></div>
+          <div class="rule"><b>PREF</b><div><strong>1.5 &times; G</strong><span>The default in layout. Use this unless space is genuinely constrained.</span></div></div>
+          <div class="rule"><b>PAGE</b><div><strong>2 &times; G from any page edge</strong><span>Applies to covers, title cards and stand graphics where the lockup is the only element.</span></div></div>
+        </div>
+      </div>
+      <div>
+        <h3>Minimum sizes</h3>
+        <div class="tbl-wrap" style="margin-top:14px">
+          <table>
+            <thead><tr><th>Lockup</th><th>Digital</th><th>Print</th></tr></thead>
+            <tbody>
+              <tr><td>A — Horizontal</td><td><span class="m">140 px</span> wide</td><td><span class="m">32 mm</span> wide</td></tr>
+              <tr><td>B — Stacked</td><td><span class="m">96 px</span> wide</td><td><span class="m">24 mm</span> wide</td></tr>
+              <tr><td>C — Aperture solo</td><td><span class="m">56 px</span> wide</td><td><span class="m">16 mm</span> wide</td></tr>
+              <tr><td>D — Gamma glyph</td><td><span class="m">16 px</span></td><td><span class="m">5 mm</span></td></tr>
+              <tr><td>E — Tagline lockup</td><td><span class="m">260 px</span> wide</td><td><span class="m">60 mm</span> wide</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="tiny" style="margin-top:12px">Below 56px wide the Aperture loses its 5u blade channels and reads as a solid lens. That is the switch point to the Gamma glyph — not a reason to simplify the Aperture.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Size ladder</h3>
+    <div class="frame g-void">
+      <div class="stagearea" style="padding:44px 32px;justify-items:start">
+        <div style="display:flex;flex-wrap:wrap;gap:40px;align-items:flex-end;width:100%">
+          <div style="display:grid;gap:12px;justify-items:start"><div class="lockup" style="--ls:34px" data-lockup="h"></div><span class="tiny mono">340 px</span></div>
+          <div style="display:grid;gap:12px;justify-items:start"><div class="lockup" style="--ls:20px" data-lockup="h"></div><span class="tiny mono">200 px</span></div>
+          <div style="display:grid;gap:12px;justify-items:start"><div class="lockup" style="--ls:14px" data-lockup="h"></div><span class="tiny mono">140 px — minimum</span></div>
+          <div style="display:grid;gap:12px;justify-items:start"><div style="width:56px" data-lockup="mark"></div><span class="tiny mono">56 px — symbol floor</span></div>
+        </div>
+      </div>
+      <div class="frame-cap"><span class="k">Reproduction ladder</span><span class="v">SCREEN @1&times;</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 06 GROUNDS ===================== -->
+<section class="sec" id="s06">
+  <div class="sec-head">
+    <div class="sec-num"><b>06</b><i></i><em>Grounds</em></div>
+    <h2>The logo on white, and everywhere else</h2>
+    <p class="lede">The symbol's ramp opens on a pale yellow that scores 1.2:1 against white — effectively invisible. So the identity carries two ramps, not one. Switch by ground, never by preference.</p>
+  </div>
+
+  <div class="block">
+    <div class="frame">
+      <div class="stagearea g-void" id="groundStage" style="padding:76px 32px;transition:background .3s ease">
+        <div class="lockup" style="--ls:32px" data-lockup="h"></div>
+      </div>
+      <div class="frame-cap">
+        <span class="k" id="groundName">Void #080808 — primary ground</span>
+        <span class="v" id="groundRamp">RAMP: SPECTRUM PRIME</span>
+      </div>
+    </div>
+    <div class="ctrls" style="margin-top:14px">
+      <button class="btn on" data-ground="g-void" data-name="Void #080808 — primary ground" data-ramp="RAMP: SPECTRUM PRIME">Void</button>
+      <button class="btn" data-ground="g-bleach" data-name="Bleach #FFFFFF — print &amp; documents" data-ramp="RAMP: SPECTRUM DEEP">White</button>
+      <button class="btn" data-ground="g-scrim" data-name="Scrim #EDEAF1 — secondary light" data-ramp="RAMP: SPECTRUM DEEP">Light grey</button>
+      <button class="btn" data-ground="g-violet" data-name="Gamma Violet #9721B0 — brand ground" data-ramp="RAMP: NONE · REVERSED WHITE">Violet</button>
+      <button class="btn" data-ground="g-plate" data-name="Photographic plate — busy ground" data-ramp="RAMP: NONE · REVERSED WHITE">Photo</button>
+      <button class="btn" data-ground="g-mono-dark" data-name="Mono on dark — single ink" data-ramp="RAMP: NONE · #F3F0F7">Mono dark</button>
+      <button class="btn" data-ground="g-mono-light" data-name="Mono on light — single ink" data-ramp="RAMP: NONE · INK #171320">Mono light</button>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>The two ramps</h3>
+    <div class="cols cols-2">
+      <div style="display:grid;gap:12px">
+        <div class="ramp ramp--prime"></div>
+        <div>
+          <h4>Spectrum Prime — dark grounds only</h4>
+          <p class="tiny" style="margin-top:6px">Photon <span class="m">#F5EC9A</span> → Signal <span class="m">#48A0F2</span> → Index <span class="m">#4A5FE0</span> → Pulse <span class="m">#E63DA4</span> → Gamma Violet <span class="m">#9721B0</span>. Stops at 0 / 28 / 46 / 72 / 100 %, sampled vertically across the symbol's bounding box.</p>
+        </div>
+      </div>
+      <div style="display:grid;gap:12px">
+        <div class="ramp ramp--deep"></div>
+        <div>
+          <h4>Spectrum Deep — light grounds only</h4>
+          <p class="tiny" style="margin-top:6px">Ochre <span class="m">#7A6208</span> → Signal Deep <span class="m">#1265C4</span> → Index Deep <span class="m">#3A4FD0</span> → Pulse Deep <span class="m">#B0106F</span> → Gamma Violet <span class="m">#9721B0</span>. Same stop positions, same hue sequence, every stop at 5:1 or better on white.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Ground rules</h3>
+    <div class="rule-list">
+      <div class="rule"><b>G1</b><div><strong>Dark ground → Spectrum Prime, logotype in Gamma Violet Lift <span class="m" style="color:var(--violet-lift)">#B84BD6</span></strong><span>The core violet is a light-ground colour. On Void it reaches only 3.0:1; the lift takes it to 4.8:1 and holds the hue. XRS keeps the Mica tail, rose to silver.</span></div></div>
+      <div class="rule"><b>G2</b><div><strong>Light ground → Spectrum Deep, logotype in Gamma Violet <span class="m" style="color:var(--violet-lift)">#9721B0</span> and Ink <span class="m">#171320</span></strong><span>The Mica tail fades into white and must not be used. On light grounds XRS is solid Ink — the two-tone effect is a dark-ground device.</span></div></div>
+      <div class="rule"><b>G3</b><div><strong>Brand violet ground → full reverse, white</strong><span>No gradient at all. The symbol and logotype both go to solid white. Nothing else sits on a violet field.</span></div></div>
+      <div class="rule"><b>G4</b><div><strong>Photography → full reverse, white, with a scrim</strong><span>Place on the quietest quarter of the frame and apply a 0–45% black linear scrim behind the clear-space box if local contrast drops below 4.5:1.</span></div></div>
+      <div class="rule"><b>G5</b><div><strong>One colour → single ink, no ramp</strong><span>Engraving, embroidery, laser, fax, newsprint, single-colour merch. <span class="m">#F3F0F7</span> on dark, <span class="m">#171320</span> on light. Never a mid grey.</span></div></div>
+      <div class="rule"><b>G6</b><div><strong>Never place the gradient symbol on a mid-tone</strong><span>Grounds between L* 30 and L* 70 kill both ramps. Go dark, go light, or go single ink.</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 07 MISUSE ===================== -->
+<section class="sec" id="s07">
+  <div class="sec-head">
+    <div class="sec-num"><b>07</b><i></i><em>Misuse</em></div>
+    <h2>Eight ways to break it</h2>
+    <p class="lede">Every one of these has happened to an identity like this one, usually inside a deck template, usually on a Friday.</p>
+  </div>
+  <div class="block">
+    <div class="misuse">
+      <div class="mis"><div class="mis-art g-void x-stretch"><div class="lockup" data-lockup="h"></div></div><div class="mis-cap"><strong>01 &times;</strong><span>Do not stretch, condense or scale non-uniformly. Ever.</span></div></div>
+      <div class="mis"><div class="mis-art g-void x-rot"><div class="lockup" data-lockup="h"></div></div><div class="mis-cap"><strong>02 &times;</strong><span>Do not rotate. The Aperture has a horizon.</span></div></div>
+      <div class="mis"><div class="mis-art g-void x-recolor"><div class="lockup" data-lockup="h"></div></div><div class="mis-cap"><strong>03 &times;</strong><span>Do not recolour to a client's or partner's palette.</span></div></div>
+      <div class="mis"><div class="mis-art g-void x-shadow"><div class="lockup" data-lockup="h"></div></div><div class="mis-cap"><strong>04 &times;</strong><span>No shadows, glows, bevels or outer strokes.</span></div></div>
+      <div class="mis"><div class="mis-art x-busy"><div class="lockup g-void" style="--ls:12px;--s1:#F5EC9A;--s2:#48A0F2;--s3:#4A5FE0;--s4:#E63DA4;--s5:#9721B0" data-lockup="h"></div></div><div class="mis-cap"><strong>05 &times;</strong><span>Do not place the gradient lockup on a mid-tone or busy ground.</span></div></div>
+      <div class="mis"><div class="mis-art g-void x-outline"><div class="lockup" data-lockup="h"></div></div><div class="mis-cap"><strong>06 &times;</strong><span>No outlined or hollow versions. Solid fill only.</span></div></div>
+      <div class="mis"><div class="mis-art g-void" style="padding:2px"><div class="lockup" style="--ls:13px" data-lockup="h"></div></div><div class="mis-cap"><strong>07 &times;</strong><span>Do not crowd. Clear space is 1&times;G minimum, always.</span></div></div>
+      <div class="mis"><div class="mis-art g-void"><div style="display:flex;align-items:center;gap:10px"><div style="width:62px" data-lockup="mark"></div><span style="font-family:var(--sans);font-size:16px;font-weight:700;color:#F3F0F7;letter-spacing:-.01em">Gamma XRS</span></div></div><div class="mis-cap"><strong>08 &times;</strong><span>Do not reset the logotype in another typeface. It is drawn artwork.</span></div></div>
+    </div>
+    <p class="note" style="margin-top:18px">Also prohibited without written approval from Brand &amp; Communications: locking the Aperture up with a third-party mark, animating the logotype letterforms, using the symbol as a repeating pattern at small scale, and cropping the Aperture to a partial array.</p>
+  </div>
+</section>
+
+<!-- ===================== 08 COLOUR ===================== -->
+<section class="sec" id="s08">
+  <div class="sec-head">
+    <div class="sec-num"><b>08</b><i></i><em>Colour</em></div>
+    <h2>A palette that is also a spec</h2>
+    <p class="lede">The core is one violet. The spectrum is five ordered stops that exist to be sampled, not scattered. The neutrals are biased toward violet so nothing on a Gamma XRS page reads as generic grey. Click any swatch to copy its hex.</p>
+  </div>
+
+  <div class="block">
+    <span class="label">Core</span>
+    <div class="swatches" style="margin-top:14px">
+      <button class="sw" data-hex="#9721B0"><span class="sw-chip" style="background:#9721B0"></span><span class="sw-meta"><span class="sw-name">Gamma Violet</span><span class="sw-hex">#9721B0</span><span class="sw-use">The one brand colour. Light grounds, fills, CTAs, the logotype on white.</span></span></button>
+      <button class="sw" data-hex="#B84BD6"><span class="sw-chip" style="background:#B84BD6"></span><span class="sw-meta"><span class="sw-name">Gamma Violet Lift</span><span class="sw-hex">#B84BD6</span><span class="sw-use">The dark-ground substitute. Logotype, links and small type on Void.</span></span></button>
+      <button class="sw" data-hex="#080808"><span class="sw-chip" style="background:#080808;border:1px solid #2E2A36"></span><span class="sw-meta"><span class="sw-name">Void</span><span class="sw-hex">#080808</span><span class="sw-use">The studio ground. Full bleed, never a panel.</span></span></button>
+      <button class="sw" data-hex="#FFFFFF"><span class="sw-chip" style="background:#fff"></span><span class="sw-meta"><span class="sw-name">Bleach</span><span class="sw-hex">#FFFFFF</span><span class="sw-use">Documents, contracts, spec sheets, anything that gets printed.</span></span></button>
+    </div>
+  </div>
+
+  <div class="block">
+    <span class="label">The Spectrum — five ordered stops</span>
+    <div class="swatches" style="margin-top:14px">
+      <button class="sw" data-hex="#F5EC9A"><span class="sw-chip" style="background:#F5EC9A"></span><span class="sw-meta"><span class="sw-name">01 Photon</span><span class="sw-hex">#F5EC9A</span><span class="sw-use">Highlight, first series, exposure. Dark grounds only.</span></span></button>
+      <button class="sw" data-hex="#48A0F2"><span class="sw-chip" style="background:#48A0F2"></span><span class="sw-meta"><span class="sw-name">02 Signal</span><span class="sw-hex">#48A0F2</span><span class="sw-use">Links, live state, tracking data.</span></span></button>
+      <button class="sw" data-hex="#4A5FE0"><span class="sw-chip" style="background:#4A5FE0"></span><span class="sw-meta"><span class="sw-name">03 Index</span><span class="sw-hex">#4A5FE0</span><span class="sw-use">Structure, secondary series, the quiet middle of the ramp.</span></span></button>
+      <button class="sw" data-hex="#E63DA4"><span class="sw-chip" style="background:#E63DA4"></span><span class="sw-meta"><span class="sw-name">04 Pulse</span><span class="sw-hex">#E63DA4</span><span class="sw-use">Emphasis, annotation, the one thing on the slide that matters.</span></span></button>
+      <button class="sw" data-hex="#9721B0"><span class="sw-chip" style="background:#9721B0"></span><span class="sw-meta"><span class="sw-name">05 Gamma Violet</span><span class="sw-hex">#9721B0</span><span class="sw-use">The ramp closes on the core. The spectrum and the brand are the same colour at the end.</span></span></button>
+    </div>
+    <p class="note" style="margin-top:16px">Order is fixed. When the spectrum encodes data series, assign them 01 → 05 in sequence and stop at five; a sixth series means the chart is wrong, not that the palette is short.</p>
+  </div>
+
+  <div class="block">
+    <span class="label">Spectrum Deep — light-ground substitutes</span>
+    <div class="swatches" style="margin-top:14px">
+      <button class="sw" data-hex="#7A6208"><span class="sw-chip" style="background:#7A6208"></span><span class="sw-meta"><span class="sw-name">01 Ochre</span><span class="sw-hex">#7A6208</span><span class="sw-use">Replaces Photon. 5.9:1 on white.</span></span></button>
+      <button class="sw" data-hex="#1265C4"><span class="sw-chip" style="background:#1265C4"></span><span class="sw-meta"><span class="sw-name">02 Signal Deep</span><span class="sw-hex">#1265C4</span><span class="sw-use">Replaces Signal. 5.7:1 on white.</span></span></button>
+      <button class="sw" data-hex="#3A4FD0"><span class="sw-chip" style="background:#3A4FD0"></span><span class="sw-meta"><span class="sw-name">03 Index Deep</span><span class="sw-hex">#3A4FD0</span><span class="sw-use">Replaces Index. 6.6:1 on white.</span></span></button>
+      <button class="sw" data-hex="#B0106F"><span class="sw-chip" style="background:#B0106F"></span><span class="sw-meta"><span class="sw-name">04 Pulse Deep</span><span class="sw-hex">#B0106F</span><span class="sw-use">Replaces Pulse. 6.7:1 on white.</span></span></button>
+      <button class="sw" data-hex="#9721B0"><span class="sw-chip" style="background:#9721B0"></span><span class="sw-meta"><span class="sw-name">05 Gamma Violet</span><span class="sw-hex">#9721B0</span><span class="sw-use">Unchanged. 6.6:1 on white.</span></span></button>
+    </div>
+  </div>
+
+  <div class="block">
+    <span class="label">Neutrals — violet-biased, chosen not inherited</span>
+    <div class="swatches" style="margin-top:14px">
+      <button class="sw" data-hex="#121016"><span class="sw-chip" style="background:#121016;border:1px solid #2E2A36"></span><span class="sw-meta"><span class="sw-name">Stage</span><span class="sw-hex">#121016</span><span class="sw-use">Panels and cards on Void.</span></span></button>
+      <button class="sw" data-hex="#1C1922"><span class="sw-chip" style="background:#1C1922"></span><span class="sw-meta"><span class="sw-name">Rig</span><span class="sw-hex">#1C1922</span><span class="sw-use">Raised surfaces, inputs, table headers.</span></span></button>
+      <button class="sw" data-hex="#2E2A36"><span class="sw-chip" style="background:#2E2A36"></span><span class="sw-meta"><span class="sw-name">Grip</span><span class="sw-hex">#2E2A36</span><span class="sw-use">Every hairline rule and border, at 1px.</span></span></button>
+      <button class="sw" data-hex="#8E8899"><span class="sw-chip" style="background:#8E8899"></span><span class="sw-meta"><span class="sw-name">Haze</span><span class="sw-hex">#8E8899</span><span class="sw-use">Secondary text and labels. 5.9:1 on Void.</span></span></button>
+      <button class="sw" data-hex="#CFC9D6"><span class="sw-chip" style="background:#CFC9D6"></span><span class="sw-meta"><span class="sw-name">Scrim</span><span class="sw-hex">#CFC9D6</span><span class="sw-use">Body copy on dark. 12.4:1 on Void.</span></span></button>
+      <button class="sw" data-hex="#171320"><span class="sw-chip" style="background:#171320"></span><span class="sw-meta"><span class="sw-name">Ink</span><span class="sw-hex">#171320</span><span class="sw-use">All type on light grounds. Never pure black.</span></span></button>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Contrast — measured, not assumed</h3>
+    <p class="note">WCAG 2.1 contrast ratios. Logotype colour is exempt from these thresholds, but small UI type and body copy are not — which is why Gamma Violet Lift and Spectrum Deep exist.</p>
+    <div class="tbl-wrap" style="margin-top:16px">
+      <table>
+        <thead><tr><th>Colour</th><th>On Void #080808</th><th></th><th>On white</th><th></th></tr></thead>
+        <tbody>
+          <tr><td><span class="dot" style="background:#9721B0"></span>Gamma Violet</td><td><span class="m">3.0:1</span></td><td><span class="warn">LARGE / UI</span></td><td><span class="m">6.6:1</span></td><td><span class="pass">AA</span></td></tr>
+          <tr><td><span class="dot" style="background:#B84BD6"></span>Gamma Violet Lift</td><td><span class="m">4.8:1</span></td><td><span class="pass">AA</span></td><td><span class="m">4.2:1</span></td><td><span class="warn">LARGE / UI</span></td></tr>
+          <tr><td><span class="dot" style="background:#F5EC9A"></span>Photon</td><td><span class="m">16.5:1</span></td><td><span class="pass">AAA</span></td><td><span class="m">1.2:1</span></td><td><span class="fail">FAIL</span></td></tr>
+          <tr><td><span class="dot" style="background:#48A0F2"></span>Signal</td><td><span class="m">7.2:1</span></td><td><span class="pass">AAA</span></td><td><span class="m">2.8:1</span></td><td><span class="fail">FAIL</span></td></tr>
+          <tr><td><span class="dot" style="background:#4A5FE0"></span>Index</td><td><span class="m">3.8:1</span></td><td><span class="warn">LARGE / UI</span></td><td><span class="m">5.2:1</span></td><td><span class="pass">AA</span></td></tr>
+          <tr><td><span class="dot" style="background:#E63DA4"></span>Pulse</td><td><span class="m">5.3:1</span></td><td><span class="pass">AA</span></td><td><span class="m">3.8:1</span></td><td><span class="warn">LARGE / UI</span></td></tr>
+          <tr><td><span class="dot" style="background:#8E8899"></span>Haze</td><td><span class="m">5.9:1</span></td><td><span class="pass">AA</span></td><td><span class="m">3.4:1</span></td><td><span class="warn">LARGE / UI</span></td></tr>
+          <tr><td><span class="dot" style="background:#CFC9D6"></span>Scrim</td><td><span class="m">12.4:1</span></td><td><span class="pass">AAA</span></td><td><span class="m">1.6:1</span></td><td><span class="fail">FAIL</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Colour outside sRGB</h3>
+    <div class="cols cols-3">
+      <div class="card"><span class="label">Display P3</span><p class="tiny">The spectrum was authored in sRGB and clips safely into P3. On wide-gamut LED walls and grading displays, convert rather than re-pick — Pulse and Photon will otherwise drift toward the panel's primaries.</p></div>
+      <div class="card"><span class="label">Print — CMYK</span><p class="tiny">Gamma Violet does not reproduce in four-colour process. On any piece where the violet carries the brand, specify <span class="m">Pantone 2603 C</span> as a fifth colour. If the budget is four-colour only, use the single-ink lockup in Ink.</p></div>
+      <div class="card"><span class="label">On the wall</span><p class="tiny">Never display the brand ramp as a full-screen background on an LED volume during a shoot. It contaminates practical spill and will show up in the plate. Brand content on the wall is for stills and stand-downs only.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 09 TYPOGRAPHY ===================== -->
+<section class="sec" id="s09">
+  <div class="sec-head">
+    <div class="sec-num"><b>09</b><i></i><em>Typography</em></div>
+    <h2>Three faces, strictly divided</h2>
+    <p class="lede">The logotype is drawn artwork and is never a typeface you can install. Everything else runs on Archivo and JetBrains Mono — one variable grotesque with a real width axis, and one monospace that carries every number we publish.</p>
+  </div>
+
+  <div class="block">
+    <div class="cols cols-3">
+      <div class="card">
+        <span class="label">Logotype</span>
+        <div style="font-family:var(--logo);font-size:26px;color:#F3F0F7;letter-spacing:.015em;padding:6px 0">GAMMA</div>
+        <h4>Michroma, redrawn</h4>
+        <p class="tiny">The wordmark derives from Michroma with custom terminals on X, R and S and +15 tracking. It exists only as vector artwork. It is never used for headlines, never for a product name, never for anything but the logo.</p>
+      </div>
+      <div class="card">
+        <span class="label">Primary</span>
+        <div style="font-size:30px;font-weight:600;color:#F3F0F7;letter-spacing:-.015em;font-variation-settings:'wdth' 116;padding:6px 0">Archivo</div>
+        <h4>Everything you read</h4>
+        <p class="tiny">Variable, 100–900 weight, 62–125 width. The width axis is the point: expanded settings at 112–118 echo the logotype's proportions in headlines without imitating its letterforms. Body text stays at 100.</p>
+      </div>
+      <div class="card">
+        <span class="label">Data</span>
+        <div style="font-family:var(--mono);font-size:24px;color:var(--signal);padding:6px 0">04:12:38:07</div>
+        <h4>JetBrains Mono</h4>
+        <p class="tiny">Every measured value, timecode, hex, filename, label and table figure. If a number is a fact rather than a quantity in a sentence, it is set in mono.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Scale</h3>
+    <div class="spec">
+      <div class="spec-row"><span class="spec-meta">Display 1 · Archivo 700 · wdth 118 · &minus;2.5% tracking · clamp 34–62px</span><span class="spec-art t-d1">Final pixel, on the day</span></div>
+      <div class="spec-row"><span class="spec-meta">Display 2 · Archivo 600 · wdth 114 · &minus;1.8% tracking</span><span class="spec-art t-d2">Nine volumes. One colour pipeline.</span></div>
+      <div class="spec-row"><span class="spec-meta">Heading · Archivo 600 · wdth 110 · 26px / 1.18</span><span class="spec-art t-h1">Camera tracking at 4.2 ms end to end</span></div>
+      <div class="spec-row"><span class="spec-meta">Body · Archivo 400 · wdth 100 · 17px / 1.62 · max 66ch</span><span class="spec-art t-b">The wall renders the plate, the camera sees it, and the grade is already agreed before anyone breaks for lunch. That is the whole argument for shooting in a volume, and it only holds if the colour pipeline is deterministic from scene file to sensor.</span></div>
+      <div class="spec-row"><span class="spec-meta">Label · JetBrains Mono 500 · 11.5px · 18% tracking · uppercase</span><span class="spec-art t-l">Stage 04 · Volume One · Lens 32mm</span></div>
+      <div class="spec-row"><span class="spec-meta">Data · JetBrains Mono 400 · 14px · tabular</span><span class="spec-art t-m">RGB 151 33 176&nbsp;&nbsp;·&nbsp;&nbsp;#9721B0&nbsp;&nbsp;·&nbsp;&nbsp;ΔE 0.42&nbsp;&nbsp;·&nbsp;&nbsp;23.976 fps</span></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Setting rules</h3>
+    <div class="cols cols-2">
+      <div class="rule-list">
+        <div class="rule"><b>T1</b><div><strong>Width is hierarchy</strong><span>Expanded (112–118) for display and headings; normal (100) for body; never expanded below 20px, where it turns to mush.</span></div></div>
+        <div class="rule"><b>T2</b><div><strong>Measure 60–70 characters</strong><span>Body copy never runs the full width of a panel. Set a max-width, not a column count.</span></div></div>
+        <div class="rule"><b>T3</b><div><strong>Negative tracking scales with size</strong><span>&minus;2.5% at display, &minus;1% at heading, 0 at body. Positive tracking only on uppercase mono labels, at 16–18%.</span></div></div>
+      </div>
+      <div class="rule-list">
+        <div class="rule"><b>T4</b><div><strong>Sentence case everywhere except labels</strong><span>Headlines are sentence case. All-caps belongs to mono labels and the logotype, nowhere else.</span></div></div>
+        <div class="rule"><b>T5</b><div><strong>Tabular numerals in any column</strong><span><span class="m">font-variant-numeric: tabular-nums</span> on every table, spec sheet and readout.</span></div></div>
+        <div class="rule"><b>T6</b><div><strong>Two weights per surface</strong><span>Pick a display weight and a body weight and hold them. A slide with four weights on it has no hierarchy, only noise.</span></div></div>
+      </div>
+    </div>
+    <p class="tiny" style="margin-top:16px">Fallback stack where Archivo is unavailable (email, Office templates, client systems): <span class="m">Archivo, "Helvetica Neue", Helvetica, Arial, sans-serif</span>. Mono fallback: <span class="m">"JetBrains Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace</span>.</p>
+  </div>
+</section>
+
+<!-- ===================== 10 MOTION ===================== -->
+<section class="sec" id="s10">
+  <div class="sec-head">
+    <div class="sec-num"><b>10</b><i></i><em>Motion</em></div>
+    <h2>The aperture opens once</h2>
+    <p class="lede">There is one logo animation. It runs at the head of a film, at the start of a title sequence, and on a first page load — and nowhere else. A logo that moves every time you see it stops being a logo.</p>
+  </div>
+
+  <div class="block">
+    <div class="frame g-void">
+      <div class="stagearea" style="padding:64px 32px"><div style="width:min(360px,80%)" id="motionMark"></div></div>
+      <div class="frame-cap"><span class="k">Aperture build · 620 ms</span><span class="v" id="motionState">READY</span></div>
+    </div>
+    <div class="ctrls" style="margin-top:14px"><button class="btn" id="motionBtn">Play build</button></div>
+  </div>
+
+  <div class="block">
+    <div class="cols cols-2">
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Property</th><th>Spec</th></tr></thead>
+          <tbody>
+            <tr><td>Origin</td><td>Blades scale from the gate line outward — crown upward, bed downward</td></tr>
+            <tr><td>Duration</td><td><span class="m">620 ms</span> total, blades only</td></tr>
+            <tr><td>Stagger</td><td><span class="m">14 ms</span> per blade, centre outward</td></tr>
+            <tr><td>Easing</td><td><span class="m">cubic-bezier(.16,.84,.34,1)</span></td></tr>
+            <tr><td>Logotype</td><td>Fades in at <span class="m">+380 ms</span>, opacity only, <span class="m">300 ms</span></td></tr>
+            <tr><td>Hold</td><td>Minimum <span class="m">1.2 s</span> at full before any cut or scroll</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="rule-list">
+        <div class="rule"><b>M1</b><div><strong>The gate never moves</strong><span>Blades grow away from it. The gate line is the fixed reference — it is the camera's optical axis.</span></div></div>
+        <div class="rule"><b>M2</b><div><strong>Never loop it</strong><span>No breathing, no idle shimmer, no gradient that travels. One build, then still.</span></div></div>
+        <div class="rule"><b>M3</b><div><strong>Letterforms do not animate</strong><span>The logotype fades. It never draws on, types on, or assembles.</span></div></div>
+        <div class="rule"><b>M4</b><div><strong>Honour reduced motion</strong><span>Under <span class="m">prefers-reduced-motion</span> the lockup appears at full state with no transition. Not a shorter animation — none.</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 11 ART DIRECTION ===================== -->
+<section class="sec" id="s11">
+  <div class="sec-head">
+    <div class="sec-num"><b>11</b><i></i><em>Art direction</em></div>
+    <h2>Show the frame, credit the rig</h2>
+    <p class="lede">Our imagery has a specific problem to solve: everyone in this industry photographs the same blue-lit LED wall from the same three-quarter angle. We do not.</p>
+  </div>
+
+  <div class="block">
+    <div class="cols cols-2">
+      <div class="rule-list">
+        <div class="rule"><b>DO</b><div><strong>Lead with the finished frame</strong><span>The first image in any piece is the shot, presented full-bleed and un-annotated. The stage photograph comes second, as evidence.</span></div></div>
+        <div class="rule"><b>DO</b><div><strong>Shoot the crew, not the kit</strong><span>Hands on a colour panel, a DP at the eyepiece, a stage manager on comms. People at work reads as capability; empty equipment reads as a rental listing.</span></div></div>
+        <div class="rule"><b>DO</b><div><strong>Use the plate as a light source</strong><span>Where the wall appears, let its content light the foreground. Colour spill on faces and floor is the whole argument for the technique.</span></div></div>
+        <div class="rule"><b>DO</b><div><strong>Pair image with number</strong><span>Every hero image carries a mono caption: stage, lens, frame rate, date. Specificity is the personality.</span></div></div>
+      </div>
+      <div class="rule-list">
+        <div class="rule"><b>NO</b><div><strong>The three-quarter wall shot</strong><span>Wide, empty volume, blue gradient, one figure for scale. It is the stock photograph of this industry.</span></div></div>
+        <div class="rule"><b>NO</b><div><strong>Grid and wireframe overlays</strong><span>Cyan wireframes on a face say "the future" and nothing else. We show real interfaces or nothing.</span></div></div>
+        <div class="rule"><b>NO</b><div><strong>Heavy brand grading</strong><span>Do not push imagery toward violet to make it look on-brand. We sell colour accuracy; a violet-tinted portfolio undermines the claim.</span></div></div>
+        <div class="rule"><b>NO</b><div><strong>Generated or composited plates</strong><span>Every frame we publish was captured. If it needs a disclaimer, it does not go out.</span></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="cols cols-2">
+      <div class="card">
+        <span class="label">Grade</span>
+        <p class="tiny">Neutral, contrast-forward, black point set to <span class="m">L* 4–6</span> rather than crushed. Shadows stay slightly cool; skin is not warmed. Grain is acceptable; halation and bloom are not.</p>
+      </div>
+      <div class="card">
+        <span class="label">Crop &amp; caption</span>
+        <p class="tiny">Hero imagery at <span class="m">2.39:1</span> or <span class="m">2:1</span>. Supporting imagery at <span class="m">3:2</span>. Captions sit below-left in mono at 11px, 16% tracking, Haze — format: <span class="m">STAGE 04 · VOLUME ONE · 32MM · 23.976</span>.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 12 APPLICATIONS ===================== -->
+<section class="sec" id="s12">
+  <div class="sec-head">
+    <div class="sec-num"><b>12</b><i></i><em>Applications</em></div>
+    <h2>The system in use</h2>
+    <p class="lede">Reference executions. Where a new application is not covered here, resolve it against the principles in section 01 and send it to Brand &amp; Communications before it ships.</p>
+  </div>
+
+  <div class="block">
+    <span class="label">Business card — 85 &times; 55 mm</span>
+    <div class="apps" style="margin-top:14px">
+      <div class="card-art card-front g-void">
+        <div class="lockup" data-lockup="h"></div>
+        <div>
+          <div class="cd-name">Ravi Menon</div>
+          <div class="cd-role">Virtual Production Supervisor</div>
+          <div class="cd-cont">ravi@gammaxrs.com<br>+44 20 7946 0142<br>gammaxrs.com</div>
+        </div>
+        <div class="card-edge"></div>
+      </div>
+      <div class="card-art card-back g-bleach">
+        <div class="lockup" style="--ls:15px" data-lockup="h"></div>
+        <div>
+          <div class="cd-name">Final pixel, on the day.</div>
+          <div class="cd-cont">Stage 01–04 · Shepperton<br>Stage 05–09 · Chennai</div>
+        </div>
+      </div>
+    </div>
+    <p class="tiny" style="margin-top:12px">Front: Void stock, Pantone 2603 C spot on the edge bar, logotype in Gamma Violet Lift. Reverse: uncoated white, Spectrum Deep ramp, Ink type. The 5mm spectrum edge is the only decorative element in the whole system — it is what makes the card recognisable face-down.</p>
+  </div>
+
+  <div class="block">
+    <span class="label">Digital slate — stage &amp; delivery</span>
+    <div class="slate" style="margin-top:14px">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap">
+        <div class="lockup g-void" style="--ls:17px" data-lockup="h"></div>
+        <span class="pill">Volume One · Stage 04</span>
+      </div>
+      <div class="slate-grid">
+        <div class="slate-cell"><span class="k">Scene</span><span class="v">114A</span></div>
+        <div class="slate-cell"><span class="k">Take</span><span class="v">07</span></div>
+        <div class="slate-cell"><span class="k">Roll</span><span class="v">A029</span></div>
+        <div class="slate-cell"><span class="k">FPS</span><span class="v">23.976</span></div>
+        <div class="slate-cell"><span class="k">Lens</span><span class="v">32 mm</span></div>
+        <div class="slate-cell"><span class="k">Stop</span><span class="v">T2.8</span></div>
+        <div class="slate-cell"><span class="k">Wall latency</span><span class="v" style="color:#5BD6A0">4.2 ms</span></div>
+        <div class="slate-cell"><span class="k">Timecode</span><span class="v">04:12:38:07</span></div>
+      </div>
+      <p class="tiny">Mode B throughout: Stage panels, 1px Grip rules, every value in mono, tabular figures. Semantic green is reserved for in-tolerance readouts and is not part of the brand palette.</p>
+    </div>
+  </div>
+
+  <div class="block">
+    <span class="label">Website hero — Mode A</span>
+    <div class="hero-web" style="margin-top:14px">
+      <div class="hero-bar">
+        <div class="lockup g-void" data-lockup="h"></div>
+        <div class="hero-nav"><span>Stages</span><span>Pipeline</span><span>Work</span><span>Contact</span></div>
+      </div>
+      <div class="hero-body">
+        <span class="label">Virtual production studio &amp; technology company</span>
+        <h3>Final pixel, on the day.</h3>
+        <p class="note" style="max-width:52ch">Nine LED volumes across two countries, running a colour pipeline we wrote ourselves. The grade is agreed before the camera rolls, and it survives to delivery.</p>
+        <span class="hero-cta">Book a stage</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <span class="label">Avatars &amp; icons</span>
+    <div class="avatars" style="margin-top:14px">
+      <div class="av g-void" style="background:var(--void)"><div style="width:62px" data-lockup="mark"></div></div>
+      <div class="av av--sq" style="background:var(--violet)"><span class="glyph" style="color:#fff">&#947;</span></div>
+      <div class="av av--circle" style="background:#fff"><span class="glyph" style="color:var(--violet)">&#947;</span></div>
+      <div class="av av--sq g-void" style="background:var(--void)"><span class="glyph" style="color:var(--violet-lift)">&#947;</span></div>
+      <div class="av av--circle g-bleach" style="background:#fff"><div style="width:58px" data-lockup="mark"></div></div>
+      <p class="tiny" style="flex:1;min-width:220px;margin:0">Above 64px the Aperture is used. At 64px and below, switch to the Gamma glyph — it is the only mark that survives a 16px favicon. Never crop the horizontal lockup into a square avatar.</p>
+    </div>
+  </div>
+
+  <div class="block">
+    <span class="label">Physical &amp; environmental</span>
+    <div class="cols cols-3" style="margin-top:14px">
+      <div class="card"><span class="label">Flight cases &amp; crew apparel</span><p class="tiny">Single-ink lockup in <span class="m">#F3F0F7</span> only. Vinyl, screen and embroidery all lose the ramp — attempting a gradient in these processes produces banding and a mark nobody recognises.</p></div>
+      <div class="card"><span class="label">Stage signage</span><p class="tiny">Aperture solo at 320 mm minimum, Void panel, edge-lit. Stage numbers set in mono at 0.6&times; the symbol height, Haze on Void.</p></div>
+      <div class="card"><span class="label">Vehicle &amp; case decals</span><p class="tiny">Stacked lockup, single ink, 120 mm minimum width. No spectrum, no violet — decals fade unevenly and a two-year-old gradient decal reads as damage.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 13 VOICE ===================== -->
+<section class="sec" id="s13">
+  <div class="sec-head">
+    <div class="sec-num"><b>13</b><i></i><em>Voice</em></div>
+    <h2>Say the number</h2>
+    <p class="lede">Our writing has one tell: it commits. Where a competitor writes "industry-leading latency", we write 4.2 ms and name the measurement point.</p>
+  </div>
+
+  <div class="block">
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th style="width:44%">We write</th><th>Not</th></tr></thead>
+        <tbody>
+          <tr><td>Camera to wall in 4.2 ms, measured at the sensor.</td><td>Industry-leading real-time performance.</td></tr>
+          <tr><td>Nine volumes. Two countries. One colour pipeline.</td><td>A global network of world-class facilities.</td></tr>
+          <tr><td>The grade is agreed before the camera rolls.</td><td>We empower creators to realise their vision.</td></tr>
+          <tr><td>We wrote the tracking layer because the off-the-shelf one drifted.</td><td>We leverage cutting-edge proprietary technology.</td></tr>
+          <tr><td>This will not work for water. Here is what we would do instead.</td><td>Our solutions handle any production challenge.</td></tr>
+          <tr><td>Book a stage.</td><td>Start your journey with us today.</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="block">
+    <div class="cols cols-3">
+      <div class="card"><span class="label">Sentence shape</span><p class="tiny">Answer first, reasoning second. Average sentence under 18 words. One idea per sentence; if it needs a semicolon it needs a full stop.</p></div>
+      <div class="card"><span class="label">Words we don't use</span><p class="tiny"><span class="m">seamless · revolutionary · unlock · empower · game-changing · immersive · next-generation · leverage · solutions · magic</span></p></div>
+      <div class="card"><span class="label">Words that are ours</span><p class="tiny"><span class="m">plate · gate · final pixel · in tolerance · on the day · the floor · deterministic · measured at</span> — borrowed from the set, not from marketing.</p></div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Voice by mode</h3>
+    <div class="cols cols-2">
+      <div class="card"><span class="label" style="color:var(--pulse)">Mode A — Studio</span><p class="tiny">Second person, present tense, short. Talks about the shot and the schedule. Credits the director and the DP by name. Never explains how the pipeline works unless asked.</p></div>
+      <div class="card"><span class="label" style="color:var(--signal)">Mode B — Technology</span><p class="tiny">First person plural, declarative, precise. Names versions, tolerances and failure modes. States what does not work as readily as what does. Assumes the reader has shipped something.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== 14 GOVERNANCE ===================== -->
+<section class="sec" id="s14">
+  <div class="sec-head">
+    <div class="sec-num"><b>14</b><i></i><em>Governance</em></div>
+    <h2>Assets, formats and who decides</h2>
+  </div>
+
+  <div class="block">
+    <div class="cols cols-2">
+      <div>
+        <h3>Master files</h3>
+        <div class="tbl-wrap" style="margin-top:14px">
+          <table>
+            <thead><tr><th>Use</th><th>Format</th></tr></thead>
+            <tbody>
+              <tr><td>Master artwork</td><td><span class="m">.svg</span> — outlined, no live text</td></tr>
+              <tr><td>Screen, transparent</td><td><span class="m">.png</span> @1&times; 2&times; 3&times;</td></tr>
+              <tr><td>Print, spot colour</td><td><span class="m">.pdf</span> / <span class="m">.eps</span>, Pantone 2603 C</td></tr>
+              <tr><td>Video &amp; titles</td><td><span class="m">.mov</span> ProRes 4444 with alpha</td></tr>
+              <tr><td>Favicon set</td><td><span class="m">.svg</span> + <span class="m">.ico</span>, glyph only</td></tr>
+              <tr><td>Office &amp; email</td><td><span class="m">.png</span>, horizontal lockup, 600px</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <h3>Naming</h3>
+        <div class="card" style="margin-top:14px">
+          <p class="mono" style="line-height:2;color:var(--scrim)">gxrs_[lockup]_[ground]_[colour]_[size].[ext]</p>
+          <p class="tiny">Where <span class="m">lockup</span> = horiz | stack | mark | glyph | tagline; <span class="m">ground</span> = dark | light; <span class="m">colour</span> = spectrum | mono. Example: <span class="m">gxrs_horiz_light_spectrum_2x.png</span></p>
+        </div>
+        <div class="card" style="margin-top:14px">
+          <span class="label">Never</span>
+          <p class="tiny">Re-export from a screenshot. Re-trace the symbol. Rebuild the ramp by eye. Edit the master SVG in place. Every asset comes from the source repository, versioned.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="block">
+    <h3>Approvals</h3>
+    <div class="rule-list">
+      <div class="rule"><b>A1</b><div><strong>No approval needed</strong><span>Anything using an unmodified master asset, on an approved ground, inside the rules in sections 04–07.</span></div></div>
+      <div class="rule"><b>A2</b><div><strong>Brand &amp; Communications sign-off</strong><span>New applications, co-branded lockups, any use of the Aperture as a pattern or crop, and every piece of paid media.</span></div></div>
+      <div class="rule"><b>A3</b><div><strong>Executive sign-off</strong><span>Changes to the marks, the palette, the typefaces, the promise line or the boilerplate. These are the only elements in this document that cannot be changed at working level.</span></div></div>
+    </div>
+    <p class="note" style="margin-top:18px">Questions, exceptions and new asset requests: <a href="#s14">brand@gammaxrs.com</a>. This document is the single source of truth; where a template and this document disagree, the document wins and the template gets fixed.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="fl">
+    <div class="lockup g-void" style="--ls:15px" data-lockup="h"></div>
+    <span class="label">GX-BRAND-001 · Revision A · 2026 · Brand &amp; Communications</span>
+  </div>
+  <p class="tiny" style="max-width:64ch">Colour values are authored in sRGB. Contrast ratios calculated to WCAG 2.1 against Void #080808 and #FFFFFF. The Aperture is generated from the parameters in section 03 — if a redraw does not match those values, the redraw is wrong.</p>
+</footer>
+
+</div>
+</main>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- Aperture geometry (section 03 parameters, in u) ----------
+     axis(t)   = AXIS + ARCH·t²          the arch the whole symbol sits on
+     crownBase = axis − GATE/2
+     bedTop    = axis + GATE/2
+     crown h   = CMIN + (CMAX−CMIN)·S(|t|)      S(x) = x²(3−2x), smoothstep
+     bed   h   = BMAX − (BMAX−BMIN)·t²          parabolic
+  ------------------------------------------------------------------- */
+  var P = {
+    n: 17,        // blades per array
+    pitch: 23,    // u, centre to centre
+    hw: 8,        // u, half base width (round join adds ~1u each side)
+    join: 2,      // round join stroke, u
+    axis: 89,     // u, arch height at centre
+    arch: 40,     // u, arch rise to the outer blade
+    gate: 32,     // u, constant
+    cmin: 12, cmax: 111,
+    bmin: 12, bmax: 95,
+    cx: 200
+  };
+  var VB_TOP = 0;
+  var VB_BOT = 202;
+  var VB_L = P.cx - ((P.n-1)/2)*P.pitch - P.hw - 3;
+  var VB_R = P.cx + ((P.n-1)/2)*P.pitch + P.hw + 3;
+  var VB = VB_L + " " + VB_TOP + " " + (VB_R-VB_L) + " " + (VB_BOT-VB_TOP);
+
+  var uid = 0;
+
+  function smoothstep(x){ return x*x*(3-2*x); }
+
+  function blades(){
+    var out = [], half = (P.n-1)/2, i, t, ax, base, h, x;
+    for(i=-half;i<=half;i++){
+      t = Math.abs(i)/half;
+      x = P.cx + i*P.pitch;
+      ax = P.axis + P.arch*t*t;
+      base = ax - P.gate/2;
+      h = P.cmin + (P.cmax-P.cmin)*smoothstep(t);
+      out.push({x:x, base:base, tip:base-h, d:-1, r:Math.abs(i)});
+      base = ax + P.gate/2;
+      h = P.bmax - (P.bmax-P.bmin)*t*t;
+      out.push({x:x, base:base, tip:base+h, d:1, r:Math.abs(i)});
+    }
+    return out;
+  }
+
+  function markSVG(opts){
+    opts = opts || {};
+    var id = "gxr" + (++uid);
+    var b = blades(), i, p, poly = "";
+    for(i=0;i<b.length;i++){
+      p = b[i];
+      poly += '<polygon class="bl" style="--ox:'+p.x+'px;--oy:'+p.base+'px;transition-delay:'+(p.r*14)+'ms"'
+            + ' points="'+(p.x-P.hw)+','+p.base+' '+(p.x+P.hw)+','+p.base+' '+p.x+','+p.tip+'"'
+            + ' fill="url(#'+id+')" stroke="url(#'+id+')"/>';
+    }
+    var grid = "";
+    if(opts.grid){
+      var half = (P.n-1)/2, k, tt, pc = [], pb = [], px, pax;
+      for(k=-half;k<=half;k++){
+        tt = Math.abs(k)/half; px = P.cx + k*P.pitch; pax = P.axis + P.arch*tt*tt;
+        pc.push(px+","+(pax-P.gate/2));
+        pb.push(px+","+(pax+P.gate/2));
+      }
+      grid = '<g class="cgrid" stroke="#E63DA4" stroke-width="0.9" opacity="0.9" fill="none">'
+        + '<polyline points="'+pc.join(" ")+'" stroke-dasharray="6 4"/>'
+        + '<polyline points="'+pb.join(" ")+'" stroke-dasharray="6 4"/>'
+        + '<line x1="'+P.cx+'" y1="0" x2="'+P.cx+'" y2="'+VB_BOT+'" stroke-dasharray="6 4" opacity="0.55"/>'
+        + '<rect x="'+(P.cx-half*P.pitch-P.hw)+'" y="2" width="'+((P.n-1)*P.pitch+P.hw*2)+'" height="198" opacity="0.4"/>'
+        + '<line x1="'+(P.cx+P.pitch*2)+'" y1="'+(P.axis+P.arch*Math.pow(2/half,2)-P.gate/2)+'" x2="'+(P.cx+P.pitch*2)+'" y2="'+(P.axis+P.arch*Math.pow(2/half,2)+P.gate/2)+'" stroke-width="2" stroke-dasharray="0"/>'
+        + '<g fill="#E63DA4" stroke="none" font-family="monospace" font-size="8">'
+        + '<text x="'+(P.cx+P.pitch*2+5)+'" y="'+(P.axis+8)+'">GATE 32u</text>'
+        + '<text x="'+(VB_L+4)+'" y="10">CROWN MAX 111u &#183; SMOOTHSTEP</text>'
+        + '<text x="'+(VB_L+4)+'" y="197">BED MAX 95u &#183; PARABOLIC</text>'
+        + '<text x="'+(P.cx-42)+'" y="'+(P.axis+P.arch+16)+'">ARCH RISE 40u</text>'
+        + '</g></g>';
+    }
+    return '<svg class="mark' + (opts.anim ? ' anim' : '') + '" viewBox="'+VB+'" role="img" aria-label="Gamma XRS Aperture symbol" '
+      + 'style="stroke-width:'+P.join+'" xmlns="http://www.w3.org/2000/svg">'
+      + '<defs><linearGradient id="'+id+'" gradientUnits="userSpaceOnUse" x1="0" y1="2" x2="0" y2="200">'
+      + '<stop offset="0%" stop-color="var(--s1,#F5EC9A)"/>'
+      + '<stop offset="28%" stop-color="var(--s2,#48A0F2)"/>'
+      + '<stop offset="46%" stop-color="var(--s3,#4A5FE0)"/>'
+      + '<stop offset="72%" stop-color="var(--s4,#E63DA4)"/>'
+      + '<stop offset="100%" stop-color="var(--s5,#9721B0)"/>'
+      + '</linearGradient></defs>'
+      + '<g>'+poly+'</g>' + grid
+      + '</svg>';
+  }
+
+  var WORD = '<span class="wordmark"><span class="wg">GAMMA</span><span class="wx">XRS</span></span>';
+
+  /* ---------- Populate every lockup slot ---------- */
+  var slots = document.querySelectorAll('[data-lockup]');
+  Array.prototype.forEach.call(slots, function(el){
+    var kind = el.getAttribute('data-lockup');
+    if(kind === 'mark'){ el.innerHTML = markSVG({}); return; }
+    el.innerHTML = markSVG({}) + WORD;
+  });
+
+  document.getElementById('railmark').innerHTML = markSVG({});
+  document.getElementById('covermark').innerHTML = markSVG({anim:true});
+
+  /* ---------- Cover build animation ---------- */
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function play(el){
+    var svg = el.querySelector('.mark');
+    if(!svg) return;
+    svg.classList.remove('run');
+    /* force reflow so the transition restarts */
+    void svg.offsetWidth;
+    requestAnimationFrame(function(){ svg.classList.add('run'); });
+  }
+  if(reduce){
+    var cm = document.getElementById('covermark').querySelector('.mark');
+    if(cm) cm.classList.add('run');
+  } else {
+    setTimeout(function(){ play(document.getElementById('covermark')); }, 180);
+  }
+
+  /* ---------- 03 Anatomy: grid toggle + replay ---------- */
+  var anatomy = document.getElementById('anatomy');
+  var gridOn = false;
+  function drawAnatomy(){
+    anatomy.innerHTML = markSVG({grid:gridOn, anim:true});
+    var svg = anatomy.querySelector('.mark');
+    if(reduce){ svg.classList.add('run'); }
+    else { requestAnimationFrame(function(){ requestAnimationFrame(function(){ svg.classList.add('run'); }); }); }
+  }
+  drawAnatomy();
+  document.getElementById('gridBtn').addEventListener('click', function(){
+    gridOn = !gridOn;
+    this.setAttribute('aria-pressed', gridOn ? 'true' : 'false');
+    this.classList.toggle('on', gridOn);
+    document.getElementById('anatomyState').textContent = gridOn ? 'GRID ON' : 'GRID OFF';
+    drawAnatomy();
+  });
+  document.getElementById('replayBtn').addEventListener('click', drawAnatomy);
+
+  /* ---------- 05 Clear-space overlay ---------- */
+  var holder = document.getElementById('csHolder');
+  var csOv = document.getElementById('csOverlay');
+  function buildClearSpace(){
+    /* G = cap height of the logotype's G ≈ 0.72em of the wordmark font-size */
+    var wm = holder.querySelector('.wordmark');
+    if(!wm) return;
+    var fs = parseFloat(getComputedStyle(wm).fontSize);
+    var G = fs * 0.72;
+    var g = Math.round(G);
+    csOv.innerHTML =
+      '<div class="cs-fill" style="left:'+(-g)+'px;top:'+(-g)+'px;right:'+(-g)+'px;bottom:'+(-g)+'px"></div>'+
+      '<div class="cs-box"  style="left:'+(-g)+'px;top:'+(-g)+'px;right:'+(-g)+'px;bottom:'+(-g)+'px"></div>'+
+      '<div class="cs-box"  style="left:0;top:0;right:0;bottom:0;border-style:solid;border-color:rgba(230,61,164,.45)"></div>'+
+      '<div class="cs-tag"  style="left:'+(-g)+'px;top:'+(-g-18)+'px">1&times;G = '+g+'px</div>'+
+      '<div class="cs-tag"  style="right:'+(-g)+'px;bottom:'+(-g-18)+'px">CLEAR SPACE</div>';
+  }
+  buildClearSpace();
+  window.addEventListener('resize', buildClearSpace);
+  if(document.fonts && document.fonts.ready){ document.fonts.ready.then(buildClearSpace); }
+  document.getElementById('csBtn').addEventListener('click', function(){
+    var on = csOv.classList.toggle('on');
+    this.setAttribute('aria-pressed', on ? 'true' : 'false');
+    this.classList.toggle('on', on);
+    document.getElementById('csState').textContent = on ? 'OVERLAY ON' : 'OVERLAY OFF';
+  });
+
+  /* ---------- 06 Ground switcher ---------- */
+  var stage = document.getElementById('groundStage');
+  var gBtns = document.querySelectorAll('[data-ground]');
+  var GROUNDS = ['g-void','g-bleach','g-scrim','g-violet','g-plate','g-mono-dark','g-mono-light'];
+  Array.prototype.forEach.call(gBtns, function(btn){
+    btn.addEventListener('click', function(){
+      Array.prototype.forEach.call(gBtns, function(b){ b.classList.remove('on'); });
+      btn.classList.add('on');
+      GROUNDS.forEach(function(c){ stage.classList.remove(c); });
+      stage.classList.add(btn.getAttribute('data-ground'));
+      document.getElementById('groundName').innerHTML = btn.getAttribute('data-name');
+      document.getElementById('groundRamp').textContent = btn.getAttribute('data-ramp');
+    });
+  });
+
+  /* ---------- 08 Copy hex ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.sw'), function(sw){
+    sw.addEventListener('click', function(){
+      var hex = sw.getAttribute('data-hex');
+      var done = function(){
+        sw.classList.add('copied');
+        setTimeout(function(){ sw.classList.remove('copied'); }, 1100);
+      };
+      if(navigator.clipboard && navigator.clipboard.writeText){
+        navigator.clipboard.writeText(hex).then(done, done);
+      } else { done(); }
+    });
+  });
+
+  /* ---------- 10 Motion demo ---------- */
+  var motion = document.getElementById('motionMark');
+  function motionDraw(){
+    motion.innerHTML = markSVG({anim:true});
+    var svg = motion.querySelector('.mark');
+    document.getElementById('motionState').textContent = 'PLAYING';
+    if(reduce){ svg.classList.add('run'); document.getElementById('motionState').textContent = 'REDUCED MOTION'; return; }
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ svg.classList.add('run'); }); });
+    setTimeout(function(){ document.getElementById('motionState').textContent = 'HOLD'; }, 900);
+  }
+  motionDraw();
+  document.getElementById('motionBtn').addEventListener('click', motionDraw);
+
+})();
+</script>
+
+</body></html>
